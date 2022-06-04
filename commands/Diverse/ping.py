@@ -1,7 +1,4 @@
-from discord.ext import commands
+from discord_slash import SlashContext
 
-async def commandPing(ctx: commands.Context):
-    await ctx.reply("Pong !")
-
-async def slashPing(ctx: commands.Context):
-    await ctx.reply("Pong !", hidden=True)
+async def ping(ctx: SlashContext):
+    await ctx.send("Pong !", hidden=True)

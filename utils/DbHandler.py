@@ -5,7 +5,7 @@ from json import JSONEncoder
 class DbEncoder(JSONEncoder):
         def default(self, o): return o.__dict__
 
-class Db():
+class DbHandler():
     def __init__(self):
         with open("db.json", encoding='utf-8') as tmp0:
             self.db = json.load(tmp0, object_hook=lambda d: Namespace(**d))
