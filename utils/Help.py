@@ -24,6 +24,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
+import discord
 from discord.ext import commands
 from datetime import datetime, timedelta
 from discord import utils, Embed, Color
@@ -208,7 +209,8 @@ class EmbeddedHelpCommand(commands.HelpCommand):
         channel = self.get_destination()
         for embed in self.embeds:
             await channel.send(embed=embed)
-        await self.context.reply("Check your DMs!")
+        if (self.context.channel.type != discord.ChannelType.private):
+            await self.context.reply("Check your DMs!")
 
     def get_destination(self):
         ctx = self.context
@@ -262,7 +264,7 @@ class EmbeddedHelpCommand(commands.HelpCommand):
             for command in cog_commands:
                 documentation = command.short_doc.replace('*', '')
                 documentation = self.shorten_text(documentation, width)
-                line = f'> **{command.name}**\n> {documentation}'.rstrip('\n> ')
+                line = f'> **{command.name}**: {command.description}\n> {documentation}'.rstrip('\n> ')
                 lines.append(line)
 
             field_value = '\n'.join(lines)
@@ -305,7 +307,7 @@ class EmbeddedHelpCommand(commands.HelpCommand):
         command_name = f'{parent_name} {command.name}' if parent_name else command.name
         title = 'Help > ' + ' > '.join(command_name.title().split(' '))
         description = command.help or command.description or command.brief
-        fields = [('Signature', f'```\n {self.context.prefix}{self.context.command} {command_name} {command.signature}\n```')]
+        fields = [('Usage', f'```\n {self.context.prefix}{command.name} {command.usage}\n```')]
 
         if command.aliases:
             fields.append(('Aliases', f"```\n{', '.join(command.aliases)}\n```"))

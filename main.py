@@ -1,13 +1,25 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
-import utils.Help as Help
-from cogs import Diverse
 import dotenv
 import os
 
+from cogs.Diverse import Diverse
+from cogs.Leaderboard import Leaderboard
+
+from events.onReactionAdd import onReactionAdd
+from events.onReactionRemove import onReactionRemove
+from events.onMemberRemove import onMemberRemove
+from events.onMessage import onMessage
+from events.onReady import onReady
+
+import utils.Help as Help
+from utils.Db import Db
+
+
+
 dotenv.load_dotenv()
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv('TEST_TOKEN')
 intents = discord.Intents.all()
 
 
@@ -19,12 +31,28 @@ class Setup(commands.Bot):
                 author_pp_link="https://cdn.discordapp.com/avatars/222008900025581568/751fdd80170da1a0e368a812faa840a2.webp?size=1024"
             )
         )
+        self.Db = Db()
+        self.db = self.Db.db
+
+    async def on_reaction_add(self, reaction, user):
+        self = await onReactionAdd(self, reaction, user)
+
+    async def on_reaction_remove(self, reaction, user):
+        self = await onReactionRemove(self, reaction, user)
+
+    async def on_member_remove(self, member):
+        self = await onMemberRemove(self, member)
+
+    async def on_message(self, message):
+        self = await onMessage(self, message)
 
     async def on_ready(self):
-        print(f"{self.user} is Ready !")
+        self = await onReady(self)
+
 
 
 bot = Setup()
 slash = SlashCommand(bot, sync_commands=True)
-bot.add_cog(Diverse.Diverse(bot))
+bot.add_cog(Leaderboard(bot))
+bot.add_cog(Diverse(bot))
 bot.run(TOKEN)
