@@ -10,7 +10,7 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
         self.bot = bot
 
     @app_commands.command(name="ping", description="Répond avec \"Pong !\"")
-    async def slashPing(self, ctx: Interaction):
+    async def ping(self, ctx: Interaction):
         await ping.ping(ctx)
 
 async def setup(bot: Setup):

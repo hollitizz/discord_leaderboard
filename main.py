@@ -1,3 +1,4 @@
+import traceback
 import dotenv
 
 dotenv.load_dotenv()
@@ -49,8 +50,10 @@ class Setup(commands.Bot, DbHandler):
 
     @tasks.loop(minutes=5)
     async def backgroundTask(self):
-        print('5 minutes passed')
-        # await refresh.loopedRefresh(self)
+        try:
+            await refresh.loopedRefresh(self)
+        except:
+            traceback.print_exc()
 
     @backgroundTask.before_loop
     async def waitBackgroundTask(self):
