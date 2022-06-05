@@ -76,7 +76,7 @@ class Setup(commands.Bot, DbHandler):
 
 
 try:
-    bot = Setup(is_test_mode=False)
+    bot = Setup(is_test_mode=True)
     bot.run(bot.token, reconnect=True)
 except KeyboardInterrupt:
     print("\nExiting...")

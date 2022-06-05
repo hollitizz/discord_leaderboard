@@ -62,5 +62,5 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4B20C3289C0F49C399992A32882FBEA8 }}
 
-      - name: 'launcg bot'
+      - name: 'launch bot'
         run: python3 ./main.py
