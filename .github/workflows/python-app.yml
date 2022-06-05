@@ -6,8 +6,6 @@ name: Python application
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 permissions:
   contents: read
@@ -33,7 +31,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    required: build
+    require: build
 
     steps:
     - name: launch the bot
