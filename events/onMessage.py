@@ -1,7 +1,7 @@
-from main import Setup
 from discord import Message
 from utils.leaderboard.addPlayerOpgg import addPlayerOpgg
 from utils.leaderboard.checkOpggLinkIsValid import checkOpggLinkIsValid
+from utils.myTypes import Setup
 
 
 async def onMessage(self: Setup, message: Message):

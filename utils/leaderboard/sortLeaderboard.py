@@ -1,6 +1,5 @@
-from utils.Setup import Setup
-from discord_slash import SlashContext
-from myTypes import userList
+from utils.myTypes import Setup, userList
+from discord import Interaction
 
 RANK_EMOJI = [
     "<:ss:934834425705955368>",

@@ -1,8 +1,7 @@
 import urllib
 from discord import Message
-from main import Setup
+from utils.myTypes import User, Setup
 
-from myTypes import User
 from utils.leaderboard.createPlayer import create_player
 
 

@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from DbHandler import DbHandler
+from utils.DbHandler import DbHandler
 
 from events.onReactionAdd import onReactionAdd
 from events.onReactionRemove import onReactionRemove
@@ -10,7 +10,8 @@ from events.onReady import onReady
 
 class Setup(commands.Bot, DbHandler):
     def __init__(self, token, riot_token):
-        super().__init__("!", intents=discord.Intents.all())
+        commands.Bot.__init__(self, "!", intents=discord.Intents.all())
+        DbHandler.__init__(self)
         self.token = token
         self.riot_token = riot_token
 

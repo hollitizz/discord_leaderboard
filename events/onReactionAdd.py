@@ -1,5 +1,6 @@
-from utils.Setup import Setup
 from discord import Reaction, User
+
+from utils.myTypes import Setup
 
 async def onReactionAdd(self: Setup, reaction: Reaction, user: User):
     coaching = self.db.coaching

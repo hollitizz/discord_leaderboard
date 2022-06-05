@@ -1,7 +1,6 @@
-from utils.Setup import Setup
 from utils.leaderboard.checkIdExist import checkIdExist
 from utils.leaderboard.checkName import checkName
-from utils.myTypes import User
+from utils.myTypes import User, Setup
 
 
 async def create_player(self: Setup, user: User):

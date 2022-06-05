@@ -1,8 +1,7 @@
 from discord.ext import commands
-from discord_slash import cog_ext, SlashContext
+from discord import app_commands, Interaction
 
-
-from commands.Diverse import ping
+from commands.diverse import ping
 from utils.Setup import Setup
 
 
@@ -10,9 +9,9 @@ class Diverse(commands.Cog, description="Group of commands for the leaderboard")
     def __init__(self, bot: Setup):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="Ping", description="Reply with Pong")
-    async def slashPing(self, ctx: SlashContext):
+    @app_commands.command(name="ping", description="Reply with Pong")
+    async def slashPing(self, ctx: Interaction):
         await ping.ping(ctx)
 
-def setup(bot):
-    bot.add_cog(Diverse(bot))
+async def setup(bot):
+    await bot.add_cog(Diverse(bot))

@@ -1,7 +1,5 @@
 import asyncio
-from utils.Setup import Setup
-from discord_slash import SlashContext
-from myTypes import userList, userType
+from utils.myTypes import Setup, userList, User
 import requests
 
 
@@ -26,8 +24,8 @@ API_RANK = {
 }
 
 
-async def getSummonerDatas(riot_token: str, user: userType):
-    link = f"https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/{user[5]}?api_key={riot_token}"
+async def getSummonerDatas(riot_token: str, user: User):
+    link = f"https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/{user.id}?api_key={riot_token}"
     r = requests.get(link)
     data = r.json()
     return data
@@ -45,7 +43,7 @@ async def getApiRank(rank):
             return rank_int
 
 
-async def getPlayerStats(riot_token: str, user: userType):
+async def getPlayerStats(riot_token: str, user: User):
     data = getSummonerDatas(riot_token, user)
     try:
         if (isinstance(data, list)):
@@ -69,5 +67,5 @@ async def refreshStats(self: Setup):
     for i, user in enumerate(users):
         if ((i + 1) % 10 == 0):
             await asyncio.sleep(1)
-        user = getPlayerStats(self.riot_token, user)
+        user = await getPlayerStats(self.riot_token, user)
     self.save()

@@ -1,17 +1,21 @@
-from discord.ext import commands
-from discord_slash import cog_ext
-
-from commands.Leaderboard import refresh
+from discord.ext.commands import Cog
+from discord import app_commands, Interaction
+from commands.leaderboard import refresh
+from commands.leaderboard import register
 
 from utils.Setup import Setup
 
-class Leaderboard(commands.Cog, description="Group of commands for the leaderboard"):
+class Leaderboard(Cog, description="Group of commands for the leaderboard"):
     def __init__(self, bot: Setup):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="Refresh", description="Refresh leaderboard")
-    async def refresh(self, ctx: commands.Context):
-        await refresh.refresh(ctx)
+    @app_commands.command(name="refresh", description="Refresh the leaderboard")
+    async def refresh(self, ctx: Interaction):
+        await refresh.refresh(self.bot, ctx)
 
-def setup(bot):
-    bot.add_cog(Leaderboard(bot))
+    @app_commands.command(name="register", description="Register to the leaderboard")
+    async def register(self, ctx: Interaction):
+        await register.register(self.bot, ctx)
+
+async def setup(bot):
+    await bot.add_cog(Leaderboard(bot))

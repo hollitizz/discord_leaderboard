@@ -1,6 +1,6 @@
 from discord import Member
-from utils.Setup import Setup
 from utils.leaderboard.checkIdExist import checkIdExist
+from utils.myTypes import Setup
 
 async def onMemberRemove(self: Setup, member: Member):
     tag = member.mention

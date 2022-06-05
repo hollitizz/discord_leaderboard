@@ -1,5 +1,6 @@
-from utils.Setup import Setup
 from discord import Guild, User, Role
+
+from utils.myTypes import Setup
 
 ROLE_LIST = [
     "Unranked",

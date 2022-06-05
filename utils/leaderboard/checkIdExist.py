@@ -1,4 +1,4 @@
-from myTypes import userList
+from utils.myTypes import userList
 
 async def checkIdExist(users: userList, tag: str):
     for i, user in enumerate(users):

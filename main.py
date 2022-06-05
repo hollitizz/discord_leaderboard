@@ -1,8 +1,8 @@
 import dotenv
 import os
 import inspect
+import asyncio
 
-from discord_slash import SlashCommand
 import cogs
 
 from utils.Setup import Setup
@@ -11,11 +11,16 @@ from utils.Setup import Setup
 dotenv.load_dotenv()
 TOKEN = os.getenv('TEST_TOKEN')
 
-
-if __name__ == '__main__':
+async def main():
     bot = Setup(os.getenv('TEST_TOKEN'), os.getenv('RIOT_API_KEY'))
-    slash = SlashCommand(bot, sync_commands=True)
     for cogName, _ in inspect.getmembers(cogs):
         if inspect.isclass(_):
-            bot.load_extension(f"cogs.{cogName}")
-    bot.run(bot.token)
+            await bot.load_extension(f"cogs.{cogName}")
+    await bot.start(bot.token)
+
+
+if __name__ == '__main__':
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nExiting...")
