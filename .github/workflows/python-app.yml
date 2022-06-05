@@ -31,7 +31,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    require: build
+    needs: build
 
     steps:
     - name: launch the bot
