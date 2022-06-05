@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    required: build
     - name: launch the bot
       run: |
         python main.py
