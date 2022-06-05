@@ -32,6 +32,7 @@ jobs:
       uses: SpicyPizza/create-envfile@v1.3.0
 
   deploy:
+    steps:
     - name: launch the bot
       run: |
         python main.py
