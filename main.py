@@ -1,5 +1,4 @@
 import traceback
-import dotenv
 
 
 import aiohttp
@@ -7,6 +6,7 @@ import discord
 from discord.ext import commands, tasks
 import os
 import inspect
+
 
 import cogs
 from commands.leaderboard import refresh
@@ -21,6 +21,7 @@ from events.onMemberRemove import onMemberRemove
 from events.onMessage import onMessage
 from events.onReady import onReady
 
+import dotenv
 
 dotenv.load_dotenv()
 
