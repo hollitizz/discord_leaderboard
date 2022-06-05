@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
