@@ -1,7 +1,6 @@
 import traceback
 import dotenv
 
-dotenv.load_dotenv()
 
 import aiohttp
 import discord
@@ -21,6 +20,9 @@ from events.onReactionRemove import onReactionRemove
 from events.onMemberRemove import onMemberRemove
 from events.onMessage import onMessage
 from events.onReady import onReady
+
+
+dotenv.load_dotenv()
 
 
 class Setup(commands.Bot, DbHandler):
