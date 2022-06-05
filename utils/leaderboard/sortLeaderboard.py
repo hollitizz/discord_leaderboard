@@ -21,7 +21,7 @@ def getRanking(i):
         return ":second_place:"
     if (i == 3):
         return ":third_place:"
-    return " {i}. "
+    return f" {i}. "
 
 async def printLeaderboard(self: Setup):
     msg = [[]]
@@ -30,23 +30,23 @@ async def printLeaderboard(self: Setup):
     users: userList = self.db.leaderboard.users
 
     for i, user in enumerate(users):
-        if user[2] == 0:
+        if user.tier == 0:
             continue
         else:
             new_line =  (f'{getRanking(i + 1)} '
-                        f'{user[0]}, '
-                        f'{user[1]} est '
-                        f'{RANK_EMOJI[user[2]]}'
-                        f'{(" " + str(user[3])) if user[2] < 7 else ""}, '
-                        f'{user[4]} LP')
+                        f'{user.tag}, '
+                        f'{user.name} est '
+                        f'{RANK_EMOJI[user.tier]}'
+                        f'{(" " + str(user.rank)) if user.tier < 7 else ""}, '
+                        f'{user.lp} LP')
         msg_len += len(new_line)
         if msg_len > 1850:
             msg.append([])
             msg_nbr += 1
             msg_len = 0
         msg[msg_nbr].append(new_line)
-    channel = await self.fetch_channel(self.channel)
-    for chan_id in self.msgs:
+    channel = await self.fetch_channel(self.db.channel)
+    for chan_id in self.db.leaderboard.msgs:
         to_edit = await channel.fetch_message(chan_id)
         if msg:
             await to_edit.edit(content="\n".join(msg.pop(0)))
@@ -54,7 +54,7 @@ async def printLeaderboard(self: Setup):
             await to_edit.edit(content="ㅤ")
     while msg:
         new_msg = await channel.send("\n".join(msg.pop(0)))
-        self.msgs.append(new_msg.id)
+        self.db.leaderboard.msgs.append(new_msg.id)
 
 async def sortLeaderboard(self: Setup):
     users: userList = self.db.leaderboard.users
@@ -74,3 +74,4 @@ async def sortLeaderboard(self: Setup):
         else:
             i += 1
     self.save()
+    await printLeaderboard(self)

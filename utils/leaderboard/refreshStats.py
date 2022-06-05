@@ -17,6 +17,7 @@ API_TIER = {
 }
 
 API_RANK = {
+    "0" : 0,
     "I" : 1,
     "II" : 2,
     "III" : 3,
@@ -31,41 +32,42 @@ async def getSummonerDatas(riot_token: str, user: User):
     return data
 
 
-async def getApiTier(tier):
+def getApiTier(tier):
     for tier_api, tier_int in API_TIER.items():
         if tier_api == tier:
             return tier_int
 
 
-async def getApiRank(rank):
+def getApiRank(rank):
     for rank_api, rank_int in API_RANK.items():
         if rank_api == rank:
             return rank_int
 
 
 async def getPlayerStats(riot_token: str, user: User):
-    data = getSummonerDatas(riot_token, user)
-    try:
-        if (isinstance(data, list)):
-            for d in data:
-                if d['queueType'] ==  "RANKED_SOLO_5x5":
-                    filtered_data = d
-            if not filtered_data:
-                return
-        user.name = filtered_data["summonerName"]
-        user.tier = getApiTier(filtered_data["tier"])
-        user.rank = getApiRank(filtered_data["rank"])
-        user.id = filtered_data["leaguePoints"]
-    except:
-        print(f"error on refreshing {user.name}")
+    data = await getSummonerDatas(riot_token, user)
+    if (isinstance(data, list)):
+        for d in data:
+            if d['queueType'] ==  "RANKED_SOLO_5x5":
+                filtered_data = d
+        if not filtered_data:
+            user.name = filtered_data["summonerName"]
+            raise
+    user.tier = getApiTier(filtered_data["tier"])
+    user.rank = getApiRank(filtered_data["rank"])
+    user.lp = filtered_data["leaguePoints"]
     return user
 
 
 async def refreshStats(self: Setup):
     users: userList = self.db.leaderboard.users
 
+
     for i, user in enumerate(users):
         if ((i + 1) % 10 == 0):
             await asyncio.sleep(1)
-        user = await getPlayerStats(self.riot_token, user)
+        try:
+            user = await getPlayerStats(self.riot_token, user)
+        except:
+            continue
     self.save()

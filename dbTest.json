@@ -6,24 +6,19 @@
         236100442965147648
     ],
     "opgg_channels": [
-        832306284593152050,
-        854497039161229355
+        982993159040692274
     ],
-    "channel": 855076940402917407,
-    "annonce": 834835968791150612,
+    "channel": 982992910247137380,
+    "annonce": 982992873110765568,
     "leaderboard": {
-        "msgs": [
-            962447215832465489,
-            962447219003371651,
-            962447221457043476
-        ],
+        "msgs": [],
         "users": [
             {
                 "tag": "<@300928722939281409>",
                 "name": "Only HappY",
                 "tier": 7,
                 "rank": 1,
-                "lp": 343,
+                "lp": 310,
                 "id": "9HKSH7DBpoHrtjn4BYeHa3ytwpLmHolUHF91uAF2ykq6_To"
             },
             {
@@ -31,7 +26,7 @@
                 "name": "Flacx",
                 "tier": 7,
                 "rank": 1,
-                "lp": 190,
+                "lp": 183,
                 "id": "YVix18clMZ9zc9urQlkdRrNHzbrPKYFDj2g6nkbRuzAEuz4"
             },
             {
@@ -43,6 +38,14 @@
                 "id": "0kCitGzBAYAHHchS4UQznrSVnftoGk7q4vXLgwHOCjP_QAo"
             },
             {
+                "tag": "<@236100442965147648>",
+                "name": "LirBlast",
+                "tier": 6,
+                "rank": 1,
+                "lp": 20,
+                "id": "rD5Rp9-4ZzPwBiaEakGX_ebHSf1p3FbYVc21qd58RUyIi8A"
+            },
+            {
                 "tag": "<@363764415201411085>",
                 "name": "Trei Degekko",
                 "tier": 6,
@@ -51,12 +54,12 @@
                 "id": "VjBszG21rVdqU-CEclH66TK-C8UU1-CuZvipgT-g9P3z9nk"
             },
             {
-                "tag": "<@236100442965147648>",
-                "name": "LirBlast",
+                "tag": "<@291296532177747968>",
+                "name": "kelyur",
                 "tier": 6,
-                "rank": 1,
-                "lp": 15,
-                "id": "rD5Rp9-4ZzPwBiaEakGX_ebHSf1p3FbYVc21qd58RUyIi8A"
+                "rank": 2,
+                "lp": 93,
+                "id": "fh6JxcvbQ7cEmt65GasvDFvrnQNhf0mzj0aPJ1yj4x8KUzw"
             },
             {
                 "tag": "<@217820874454073346>",
@@ -65,14 +68,6 @@
                 "rank": 2,
                 "lp": 70,
                 "id": "mQGEdB_LhT2eRL2zgq3WYq-2SGWFxe9m7_T1uAGLhLugH4g4"
-            },
-            {
-                "tag": "<@291296532177747968>",
-                "name": "kelyur",
-                "tier": 6,
-                "rank": 2,
-                "lp": 69,
-                "id": "fh6JxcvbQ7cEmt65GasvDFvrnQNhf0mzj0aPJ1yj4x8KUzw"
             },
             {
                 "tag": "<@334339794978996224>",
@@ -271,7 +266,7 @@
                 "name": "UwU Hermino",
                 "tier": 4,
                 "rank": 3,
-                "lp": 83,
+                "lp": 69,
                 "id": "LbYc6DA4Zw2ACl-264F0h74D_QO2PZ8NpL3FgLVnlPnyLEw"
             },
             {
@@ -343,7 +338,7 @@
                 "name": "LeSudiste",
                 "tier": 4,
                 "rank": 4,
-                "lp": 13,
+                "lp": 14,
                 "id": "a4uiLK3VW97LbSz01WIi78YbZjFrali1FgEWuTrS-viisbw"
             },
             {
@@ -375,7 +370,7 @@
                 "name": "Useyoname",
                 "tier": 3,
                 "rank": 1,
-                "lp": 81,
+                "lp": 100,
                 "id": "E-QVgK5WuHD7KGJAoSa6d9oNqPHUsoddrLrdPP7hF8nqMLo"
             },
             {
@@ -403,20 +398,20 @@
                 "id": "AxfLZa270N3JfYdZ2Ez4UCCPzihU9okXEOw_3FjSLg61eOQAXwElQCuF3g"
             },
             {
+                "tag": "<@240513857976532993>",
+                "name": "Eryiaa",
+                "tier": 3,
+                "rank": 3,
+                "lp": 77,
+                "id": "Q_lpIEqLo5oBwNAiZZqvV3kc5GUPT5QeTHiasyXAqeizIys"
+            },
+            {
                 "tag": "<@554688881547542541>",
                 "name": "OnSylas tr\u00e9svite",
                 "tier": 3,
                 "rank": 3,
                 "lp": 72,
                 "id": "C1BIEctvAssf66nBvKOOsQy_xKLvYxGRTCCfMeysrWkr6Ki5CIdvYkcOPA"
-            },
-            {
-                "tag": "<@240513857976532993>",
-                "name": "Eryiaa",
-                "tier": 3,
-                "rank": 3,
-                "lp": 63,
-                "id": "Q_lpIEqLo5oBwNAiZZqvV3kc5GUPT5QeTHiasyXAqeizIys"
             },
             {
                 "tag": "<@102051847178588160>",

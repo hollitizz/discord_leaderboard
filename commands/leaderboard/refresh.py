@@ -13,7 +13,8 @@ async def loopedRefresh(self):
     print(f"[{getTime('%H:%M:%S')}]: Sorting Leaderboard...", end="\r")
     await sortLeaderboard(self)
     print(f"[{getTime('%H:%M:%S')}]: Refresing Roles...    ", end="\r")
-    await refreshRoles(self)
+    if not self.is_test_mode:
+        await refreshRoles(self)
     print(f"[{getTime('%H:%M:%S')}]: Refresh Done !        ")
 
 async def refresh(self: Setup, ctx: Interaction):
@@ -23,5 +24,6 @@ async def refresh(self: Setup, ctx: Interaction):
     await ctx.edit_original_message(content="Sorting Leaderboard...")
     await sortLeaderboard(self)
     await ctx.edit_original_message(content="Refresing Roles...")
-    await refreshRoles(self)
+    if not self.is_test_mode:
+        await refreshRoles(self)
     await ctx.edit_original_message(content="Refresh Done !")

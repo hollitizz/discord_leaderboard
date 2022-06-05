@@ -43,7 +43,7 @@ async def refreshRoles(self: Setup):
         discord_user: User = None
         user_roles: list[Role] = []
         try:
-            discord_user, user_roles = getUser(guild, user)
+            discord_user, user_roles = await getUser(guild, user)
         except:
             print(f"{user.tag} is not on this server, please delete him")
             continue
