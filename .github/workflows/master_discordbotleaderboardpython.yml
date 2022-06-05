@@ -51,14 +51,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: 'Launch Bot'
-        run: python3 main.py
-
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
           name: python-app
           path: .
+
+      - name: 'Launch Bot'
+        run: python3 main.py
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
