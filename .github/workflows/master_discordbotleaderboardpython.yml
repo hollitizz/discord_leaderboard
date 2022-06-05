@@ -51,6 +51,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: 'Launch Bot'
+        run: python3 main.py
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
@@ -64,6 +67,3 @@ jobs:
           app-name: 'DiscordBotLeaderboardPython'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D3A3A2A0DD8A4E0DA68B5F6191D84074 }}
-
-      - name: 'Launch Bot'
-        run: python3 main.py
