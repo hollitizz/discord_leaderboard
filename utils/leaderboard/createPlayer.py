@@ -3,12 +3,12 @@ from utils.leaderboard.checkName import checkName
 from utils.myTypes import User, Setup
 
 
-async def create_player(self: Setup, user: User):
+async def createPlayer(self: Setup, user: User):
     users = self.db.leaderboard.users
     leaderboard = self.db.leaderboard
-    summoner_exist, leaderboard.tmp_id = await checkName(users, leaderboard.tmp_id)
+    leaderboard.tmp_id = await checkName(users, leaderboard.tmp_id)
     player_exist = checkIdExist(user.tag)
-    if (not summoner_exist):
+    if (not leaderboard.tmp_id):
         return
     if (player_exist == -1):
         users.append(user)

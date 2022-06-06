@@ -2,7 +2,7 @@ import urllib
 from discord import Message
 from utils.myTypes import User, Setup
 
-from utils.leaderboard.createPlayer import create_player
+from utils.leaderboard.createPlayer import createPlayer
 
 
 async def addPlayerOpgg(self: Setup, message: Message):
@@ -14,4 +14,4 @@ async def addPlayerOpgg(self: Setup, message: Message):
     opgg = tmp[0].split("/")
     opgg = opgg[-1].split("=")
     user = urllib.parse.unquote(opgg[-1])
-    create_player(self, User(tag, user, leaderboard.tmp_id))
+    createPlayer(self, User(tag, user, leaderboard.tmp_id))

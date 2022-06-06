@@ -18,6 +18,7 @@ from utils.DbHandler import DbHandler
 from events.onReactionAdd import onReactionAdd
 from events.onReactionRemove import onReactionRemove
 from events.onMemberRemove import onMemberRemove
+from events.onMemberAdd import onMemberAdd
 from events.onMessage import onMessage
 from events.onReady import onReady
 
@@ -67,6 +68,9 @@ class Setup(commands.Bot, DbHandler):
 
     async def on_reaction_remove(self, reaction, user):
         await onReactionRemove(self, reaction, user)
+
+    async def on_member_add(self, member):
+        await onMemberAdd(self, member)
 
     async def on_member_remove(self, member):
         await onMemberRemove(self, member)

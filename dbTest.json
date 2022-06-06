@@ -11,7 +11,11 @@
     "channel": 982992910247137380,
     "annonce": 982992873110765568,
     "leaderboard": {
-        "msgs": [],
+        "msgs": [
+            983286409727193118,
+            983286412633841674,
+            983286414101872650
+        ],
         "users": [
             {
                 "tag": "<@300928722939281409>",
@@ -26,7 +30,7 @@
                 "name": "Flacx",
                 "tier": 7,
                 "rank": 1,
-                "lp": 183,
+                "lp": 199,
                 "id": "YVix18clMZ9zc9urQlkdRrNHzbrPKYFDj2g6nkbRuzAEuz4"
             },
             {
@@ -34,7 +38,7 @@
                 "name": "Obbito",
                 "tier": 6,
                 "rank": 1,
-                "lp": 66,
+                "lp": 34,
                 "id": "0kCitGzBAYAHHchS4UQznrSVnftoGk7q4vXLgwHOCjP_QAo"
             },
             {
@@ -42,7 +46,7 @@
                 "name": "LirBlast",
                 "tier": 6,
                 "rank": 1,
-                "lp": 20,
+                "lp": 25,
                 "id": "rD5Rp9-4ZzPwBiaEakGX_ebHSf1p3FbYVc21qd58RUyIi8A"
             },
             {
@@ -57,8 +61,8 @@
                 "tag": "<@291296532177747968>",
                 "name": "kelyur",
                 "tier": 6,
-                "rank": 2,
-                "lp": 93,
+                "rank": 1,
+                "lp": 0,
                 "id": "fh6JxcvbQ7cEmt65GasvDFvrnQNhf0mzj0aPJ1yj4x8KUzw"
             },
             {
@@ -114,15 +118,15 @@
                 "name": "Its Koj\u00ec",
                 "tier": 5,
                 "rank": 1,
-                "lp": 14,
+                "lp": 15,
                 "id": "ED1wQMWUBlZcyMvPv3ECJw-y9bz8p21t_ECKE0j2oYEnXnM"
             },
             {
                 "tag": "<@220275536289595392>",
                 "name": "Usah",
                 "tier": 5,
-                "rank": 3,
-                "lp": 92,
+                "rank": 2,
+                "lp": 14,
                 "id": "5Gr4IuxNUyhLOmOkXA_i0iuTRlQySThniPZtlPjkGnePCvg"
             },
             {
@@ -150,20 +154,20 @@
                 "id": "kvVgng4WDpom0fCvJjO9HZ5x6LxEyrddOpVKwHNt8PVZppc"
             },
             {
-                "tag": "<@948190363728900116>",
-                "name": "HiImAnes",
-                "tier": 5,
-                "rank": 3,
-                "lp": 0,
-                "id": "Sv3SA0IZrW4R4bFA24dP3ima1oLse6l3C2xLsopI44ijtSA"
-            },
-            {
                 "tag": "<@303851829564014593>",
                 "name": "CASPyrellDecimus",
                 "tier": 5,
-                "rank": 4,
-                "lp": 69,
+                "rank": 3,
+                "lp": 0,
                 "id": "hLl9qo6I38pyO7KmmVh6ZMDntF0Am1_CsBlvu2xwAN5yqNc"
+            },
+            {
+                "tag": "<@948190363728900116>",
+                "name": "HiImAnes",
+                "tier": 5,
+                "rank": 4,
+                "lp": 75,
+                "id": "Sv3SA0IZrW4R4bFA24dP3ima1oLse6l3C2xLsopI44ijtSA"
             },
             {
                 "tag": "<@565475830445244435>",
@@ -254,6 +258,14 @@
                 "id": "DPY1uaQsKHm_q2qfOgnI06y8VvTdyo7jRDbfgIr6UL6GXNYg"
             },
             {
+                "tag": "<@863964067559768066>",
+                "name": "Ch\u00e2teau ambulant",
+                "tier": 4,
+                "rank": 2,
+                "lp": 24,
+                "id": "010AnJP_L2nuE9iaUPm8aMOS7oS8lxC0cPKN0x3fLlkXENpK"
+            },
+            {
                 "tag": "<@98774113140613120>",
                 "name": "Ameyy",
                 "tier": 4,
@@ -270,14 +282,6 @@
                 "id": "LbYc6DA4Zw2ACl-264F0h74D_QO2PZ8NpL3FgLVnlPnyLEw"
             },
             {
-                "tag": "<@863964067559768066>",
-                "name": "Ch\u00e2teau ambulant",
-                "tier": 4,
-                "rank": 3,
-                "lp": 65,
-                "id": "010AnJP_L2nuE9iaUPm8aMOS7oS8lxC0cPKN0x3fLlkXENpK"
-            },
-            {
                 "tag": "<@594062170933821450>",
                 "name": "Psy\u03bao Decimus",
                 "tier": 4,
@@ -292,6 +296,14 @@
                 "rank": 3,
                 "lp": 16,
                 "id": "gNvaLmbc-1lP3hWUTZ7pWmg-bFlfY9lt7bD0unLLRO3539Tu"
+            },
+            {
+                "tag": "<@249317878849863680>",
+                "name": "Aisurufu",
+                "tier": 4,
+                "rank": 4,
+                "lp": 66,
+                "id": "q21GGR3tZQFHNsD27TBo8IWjggX-wCDVesYdqYiZ3e41ULc"
             },
             {
                 "tag": "<@223937496805801984>",
@@ -316,14 +328,6 @@
                 "rank": 4,
                 "lp": 32,
                 "id": "HL1hcbI6pCu82OWnaWkn7AT0W2AwSPUjIQI2g2zoQlZ5FmQ"
-            },
-            {
-                "tag": "<@249317878849863680>",
-                "name": "Aisurufu",
-                "tier": 4,
-                "rank": 4,
-                "lp": 27,
-                "id": "q21GGR3tZQFHNsD27TBo8IWjggX-wCDVesYdqYiZ3e41ULc"
             },
             {
                 "tag": "<@482096567273390100>",
@@ -450,7 +454,7 @@
                 "name": "Loicgun",
                 "tier": 3,
                 "rank": 4,
-                "lp": 0,
+                "lp": 17,
                 "id": "lVTL4TOt_W4RhSQxCaJvR5gNHoyN6WSLbCeTqcbqjMcZcnQ"
             },
             {

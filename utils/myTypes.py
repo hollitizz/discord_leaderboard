@@ -1,9 +1,10 @@
-from typing import NewType
-from utils.DbHandler import DbHandler
+from typing import NewType, List
 from discord import Intents
 from discord.ext import commands
 import os
 
+from utils.DbHandler import DbHandler
+from utils.leaderboard.refreshStats import getPlayerStats
 
 class User():
     def __init__(self, tag, name, id):
@@ -13,6 +14,13 @@ class User():
         self.rank: int = 1
         self.lp: int = 0
         self.id: str = id
+
+    async def setStats(self, riot_token: str):
+        data = await getPlayerStats(riot_token, self)
+        self.tier = data['tier']
+        self.rank = data['rank']
+        self.lp = data['lp']
+
 
 class Setup(commands.Bot, DbHandler):
     def __init__(self, is_test_mode=False):
@@ -31,4 +39,4 @@ class Setup(commands.Bot, DbHandler):
         self.is_test_mode: bool = is_test_mode
         self.riot_token: str = os.getenv("RIOT_API_KEY")
 
-userList = NewType("userList", list[User])
+userList = NewType("userList", List[User])
