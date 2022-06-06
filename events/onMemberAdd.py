@@ -45,5 +45,5 @@ async def onMemberAdd(self: Setup, member: Member):
     pos = await checkIdExist(self.db.leaderboard.users, tag)
     if (pos == -1):
         newUser = askNewMember()
-        createPlayer(self, askNewMember())
+        await createPlayer(self, askNewMember())
     await member.remove_roles(new_member_role)
