@@ -18,7 +18,7 @@ from utils.DbHandler import DbHandler
 from events.onReactionAdd import onReactionAdd
 from events.onReactionRemove import onReactionRemove
 from events.onMemberRemove import onMemberRemove
-from events.onMemberAdd import onMemberAdd
+from events.onMemberJoin import onMemberJoin
 from events.onMessage import onMessage
 from events.onReady import onReady
 
@@ -31,13 +31,13 @@ class Setup(commands.Bot, DbHandler):
     def __init__(self, is_test_mode=False):
         if is_test_mode:
             self.token: str = os.getenv("TEST_TOKEN")
-            self.guild_id: int = os.getenv("GUILD_TEST_ID")
+            self.guild_id: int = int(os.getenv("GUILD_TEST_ID"))
             db_path: str = "dbTest.json"
-            self.bot_id: int = os.getenv("BOT_TEST_ID")
+            self.bot_id: int = int(os.getenv("BOT_TEST_ID"))
         else:
-            self.bot_id: int = os.getenv("BOT_ID")
+            self.bot_id: int = int(os.getenv("BOT_ID"))
             self.token: str = os.getenv("TOKEN")
-            self.guild_id: int = os.getenv("GUILD_ID")
+            self.guild_id: int = int(os.getenv("GUILD_ID"))
             db_path: str = "db.json"
         super().__init__("!", intents=discord.Intents.all(), application_id=self.bot_id)
         DbHandler.__init__(self, db_path)
@@ -49,13 +49,13 @@ class Setup(commands.Bot, DbHandler):
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
                 await self.load_extension(f"cogs.{cogName}")
-            await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+            # await bot.tree.sync(guild=discord.Object(id=self.guild_id))
         self.backgroundTask.start()
 
     @tasks.loop(minutes=5)
     async def backgroundTask(self):
         if self.is_test_mode:
-            print("skipping auto refresh")
+            print("Test mode, Skipping refresh")
             return
         try:
             await refresh.loopedRefresh(self)
@@ -72,8 +72,8 @@ class Setup(commands.Bot, DbHandler):
     async def on_reaction_remove(self, reaction, user):
         await onReactionRemove(self, reaction, user)
 
-    async def on_member_add(self, member):
-        await onMemberAdd(self, member)
+    async def on_member_join(self, member):
+        await onMemberJoin(self, member)
 
     async def on_member_remove(self, member):
         await onMemberRemove(self, member)

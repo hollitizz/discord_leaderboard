@@ -17,23 +17,26 @@ class User():
         self.id: str = id
 
     async def setStats(self, riot_token: str):
-        data = await getPlayerStats(riot_token, self)
-        self.rank = getApiRank(data['rank'])
-        self.tier = getApiTier(data['tier'])
-        self.lp = data['lp']
+        try:
+            fetch_user = await getPlayerStats(riot_token, User(self.tag, self.name, self.id))
+            self.tier = fetch_user.tier
+            self.rank = fetch_user.rank
+            self.lp = fetch_user.lp
+        except:
+            pass
 
 
 class Setup(commands.Bot, DbHandler):
     def __init__(self, is_test_mode=False):
         if is_test_mode:
             self.token: str = os.getenv("TEST_TOKEN")
-            self.guild_id: int = os.getenv("GUILD_TEST_ID")
+            self.guild_id: int = int(os.getenv("GUILD_TEST_ID"))
             db_path: str = "dbTest.json"
-            self.bot_id: int = os.getenv("BOT_TEST_ID")
+            self.bot_id: int = int(os.getenv("BOT_TEST_ID"))
         else:
-            self.bot_id: int = os.getenv("BOT_ID")
+            self.bot_id: int = int(os.getenv("BOT_ID"))
             self.token: str = os.getenv("TOKEN")
-            self.guild_id: int = os.getenv("GUILD_ID")
+            self.guild_id: int = int(os.getenv("GUILD_ID"))
             db_path: str = "db.json"
         super().__init__("!", intents=Intents.all(), application_id=self.bot_id)
         DbHandler.__init__(self, db_path)

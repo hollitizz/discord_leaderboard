@@ -46,8 +46,8 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     # @app_commands.default_permissions(manage_messages=True)
     @app_commands.checks.has_role("bot admin")
     async def simJoin(self, ctx: Interaction):
-        await ctx.response.send_message(f"Fake event on_member_add", ephemeral=True)
-        self.bot.dispatch("member_add", ctx.user)
+        await ctx.response.send_message(f"Go Dm !", ephemeral=True)
+        self.bot.dispatch("member_join", ctx.user)
 
     @simJoin.error
     async def simJoinError(self, ctx: Interaction, error: Exception):

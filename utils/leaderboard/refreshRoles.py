@@ -26,7 +26,6 @@ async def getUser(guild: Guild, tag: str):
     res = ''.join(map(str, tmp))
     user: User = await guild.fetch_member(res)
     user_roles = user.roles
-    #TODO: automatic deletion of the user
     return user, user_roles
 
 async def setRole(user: User, role: Role):
@@ -35,24 +34,32 @@ async def setRole(user: User, role: Role):
 async def unsetRole(user: User, role: Role):
     await user.remove_roles(role)
 
+async def refreshUserRole(guild: Guild, user):
+    role_set = False
+    discord_user: User = None
+    user_roles: list[Role] = []
+    try:
+        discord_user, user_roles = await getUser(guild, user.tag)
+    except:
+        raise Exception(f"{user.tag} is not on this server, please delete him")
+    for role in user_roles:
+        if role.name == "mets ton OPGG":
+            await unsetRole(discord_user, role)
+        if role.name in ROLE_LIST and role.name != ROLE_LIST[user.tier]:
+            await unsetRole(discord_user, role)
+        if role.name == ROLE_LIST[user.tier]:
+            role_set = True
+    if not role_set:
+        await setRole(discord_user, getRoleByName(guild, ROLE_LIST[user.tier]))
+
 async def refreshRoles(self: Setup):
     users = self.db.leaderboard.users
-    guild = self.get_guild(832250335631376455)
+    guild = self.get_guild(self.guild_id)
     for user in users:
-        role_set = False
-        discord_user: User = None
-        user_roles: list[Role] = []
         try:
-            discord_user, user_roles = await getUser(guild, user)
-        except:
-            print(f"{user.tag} is not on this server, please delete him")
-            continue
-        for role in user_roles:
-            if role.name == "mets ton OPGG":
-                unsetRole(discord_user, role)
-            if role.name in ROLE_LIST and role.name != ROLE_LIST[user.tier]:
-                unsetRole(discord_user, role)
-            if role.name == ROLE_LIST[user.tier]:
-                role_set = True
-        if not role_set:
-            setRole(discord_user, getRoleByName(guild, ROLE_LIST[user.tier]))
+            await refreshUserRole(guild, user)
+        except Exception as e:
+            print(e)
+            if not self.is_test_mode:
+                pass
+                #TODO: automatic deletion of the user

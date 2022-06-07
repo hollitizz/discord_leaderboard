@@ -4,8 +4,8 @@ from utils.myTypes import Setup
 
 async def onMemberRemove(self: Setup, member: Member):
     tag = member.mention
-    pos = await checkIdExist(self.db.leaderboard.users, tag)
+    pos = checkIdExist(self.db.leaderboard.users, tag)
     if (pos == -1):
         return
-    print(f"{self.db.leaderboard.users.pop(pos)} Poped !: Reason: {member} left the server")
+    print(f"{self.db.leaderboard.users.pop(pos).name} Poped !: Reason: {member} left the server")
     self.save()
