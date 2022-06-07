@@ -3,7 +3,7 @@ from utils.leaderboard.checkIdExist import checkIdExist
 from utils.leaderboard.checkName import checkName
 from utils.leaderboard.createPlayer import createPlayer
 from utils.myTypes import Setup, User
-from utils.leaderboard.refreshStats import API_RANK
+from utils.leaderboard.getPlayerStats import API_RANK
 from utils.leaderboard.refreshRoles import ROLE_LIST, getRoleByName
 
 def getBotTier(tier: int):
@@ -27,23 +27,24 @@ async def askNewMember(self: Setup, member: Member):
         summoner_id = checkName(summoner_name)
         if summoner_id:
             break
-    new_User = User(tag, summoner_id, summoner_id)
-    new_User.setStats(self.riot_token)
-    tier = getBotTier(new_User.tier)
-    rank = getBotRank(new_User.rank)
+    new_user = User(tag, summoner_id, summoner_id)
+    new_user.setStats(self.riot_token)
+    tier = getBotTier(new_user.tier)
+    rank = getBotRank(new_user.rank)
     msg = "Tu es actuellement **{tier}"
     if tier != "Unranked":
-        msg += f" {rank} {new_User.lp}lp"
+        msg += f" {rank} {new_user.lp}lp"
     msg += "**, si ce n'est pas le cas met un demande a <@222008900025581568> de t'aider"
-    return new_User
+    return new_user
 
 
 async def onMemberAdd(self: Setup, member: Member):
     tag = member.mention
-    new_member_role = getRoleByName("Nouveau")
+    new_member_role = getRoleByName(member.guild, "Nouveau")
+    await member.send("test")
     await member.add_roles(new_member_role)
     pos = await checkIdExist(self.db.leaderboard.users, tag)
     if (pos == -1):
-        newUser = askNewMember()
-        await createPlayer(self, askNewMember())
+        new_user = await askNewMember()
+        await createPlayer(self, new_user)
     await member.remove_roles(new_member_role)

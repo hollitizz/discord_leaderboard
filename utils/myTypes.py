@@ -4,7 +4,8 @@ from discord.ext import commands
 import os
 
 from utils.DbHandler import DbHandler
-from utils.leaderboard.refreshStats import getPlayerStats
+from utils.leaderboard.getPlayerStats import getPlayerStats, getApiRank, getApiTier
+
 
 class User():
     def __init__(self, tag, name, id):
@@ -17,8 +18,8 @@ class User():
 
     async def setStats(self, riot_token: str):
         data = await getPlayerStats(riot_token, self)
-        self.tier = data['tier']
-        self.rank = data['rank']
+        self.rank = getApiRank(data['rank'])
+        self.tier = getApiTier(data['tier'])
         self.lp = data['lp']
 
 

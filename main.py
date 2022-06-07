@@ -54,6 +54,9 @@ class Setup(commands.Bot, DbHandler):
 
     @tasks.loop(minutes=5)
     async def backgroundTask(self):
+        if self.is_test_mode:
+            print("skipping auto refresh")
+            return
         try:
             await refresh.loopedRefresh(self)
         except:
