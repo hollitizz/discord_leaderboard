@@ -42,17 +42,5 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     async def refreshError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
 
-    @app_commands.command(name="sim_join", description="Fake event on_member_add")
-    # @app_commands.default_permissions(manage_messages=True)
-    @app_commands.checks.has_role("bot admin")
-    async def simJoin(self, ctx: Interaction):
-        await ctx.response.send_message(f"Go Dm !", ephemeral=True)
-        self.bot.dispatch("member_join", ctx.user)
-
-    @simJoin.error
-    async def simJoinError(self, ctx: Interaction, error: Exception):
-        print(error)
-        await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
-
 async def setup(bot: Setup):
     await bot.add_cog(Leaderboard(bot), guilds=[Object(id=bot.guild_id)])

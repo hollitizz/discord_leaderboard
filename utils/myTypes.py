@@ -4,7 +4,7 @@ from discord.ext import commands
 import os
 
 from utils.DbHandler import DbHandler
-from utils.leaderboard.getPlayerStats import getPlayerStats, getApiRank, getApiTier
+from utils.leaderboard.getPlayerStats import getPlayerStats
 
 
 class User():
