@@ -24,7 +24,7 @@ class buttonHandler(discord.ui.View):
         if button.label not in member.roles:
             await member.add_roles(getRoleByName(self.guild, button.label))
         await interaction.response.edit_message(
-            content=f"le role {button.label} t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
 
     @discord.ui.button(label="Jungle", style=discord.ButtonStyle.primary)
@@ -37,7 +37,7 @@ class buttonHandler(discord.ui.View):
         if button.label not in member.roles:
             await member.add_roles(getRoleByName(self.guild, button.label))
         await interaction.response.edit_message(
-            content=f"le role {button.label} t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
 
     @discord.ui.button(label="Mid", style=discord.ButtonStyle.primary)
@@ -50,7 +50,7 @@ class buttonHandler(discord.ui.View):
         if button.label not in member.roles:
             await member.add_roles(getRoleByName(self.guild, button.label))
         await interaction.response.edit_message(
-            content=f"le role {button.label} t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
 
     @discord.ui.button(label="ADC", style=discord.ButtonStyle.primary)
@@ -63,7 +63,7 @@ class buttonHandler(discord.ui.View):
         if button.label not in member.roles:
             await member.add_roles(getRoleByName(self.guild, button.label))
         await interaction.response.edit_message(
-            content=f"le role {button.label} t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
 
     @discord.ui.button(label="Support", style=discord.ButtonStyle.primary)
@@ -76,11 +76,11 @@ class buttonHandler(discord.ui.View):
         if button.label not in member.roles:
             await member.add_roles(getRoleByName(self.guild, button.label))
         await interaction.response.edit_message(
-            content=f"le role {button.label} t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
 
     @discord.ui.button(label="Cancel", style=discord.ButtonStyle.red)
     async def buttonCancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.edit_message(
-            content=f"Aucun rôle ne t'a été attribué. Tu peux toujours le rechoisir avec /change_role", view=None
+            content=f"Aucun rôle ne t'a été attribué. Tu peux toujours en choisir à l'aide de la commande **/change_role**.", view=None
         )

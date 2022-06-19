@@ -32,7 +32,7 @@ async def askNewMember(self: Setup, member: Member, channel: TextChannel):
         msg += f" {rank} {new_user.lp}lp"
     msg += "**,\n"
     sended_msg = await channel.send(msg)
-    await sended_msg.edit(content=f"{msg}si ce n'est pas le cas tu peux demander a <@222008900025581568> de t'aider")
+    await sended_msg.edit(content=f"{msg}Si ce n'est pas le cas, tu peux contacter <@222008900025581568> pour obtenir de l'aide.")
     return new_user
 
 
@@ -46,8 +46,8 @@ async def onMemberJoin(self: Setup, member: Member):
     guild = self.get_guild(self.guild_id)
     await member.create_dm()
     channel = member.dm_channel
-    first_message = f"Salut {member.mention}, d'abord merci d'avoir rejoint le serveur !\n"\
-        f"Pour continuer, peux-tu tout d'abord m'envoyer ton nom d'invocateur (pseudo sur league), verifie bien que tu soit en EUW\n"
+    first_message = f"Salut {member.mention}, tout d'abord bienvenue à toi ! <:ZoeAery:856346121102032918>\n"\
+        f"Pour commencer, envoie-moi ton nom d'invocateur (ton pseudo sur League). Vérifie bien que tu sois en EUW !\n"
     try:
         await channel.send(first_message)
     except:
