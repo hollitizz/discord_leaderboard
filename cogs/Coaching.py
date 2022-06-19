@@ -1,6 +1,6 @@
 import datetime
 from discord.ext import commands
-from discord import app_commands, Interaction, Object
+from discord import Member, app_commands, Interaction, Object
 from commands.coaching import createCoaching
 
 from commands.diverse import ping
@@ -15,12 +15,12 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
     @app_commands.command(name="create_coaching", description="Permet de créer un coaching")
     @app_commands.checks.has_role("Coach")
     @app_commands.describe(
-        date="Date du coaching, format: **jj/mm/aaaa à hh:mm** (Exemple: **19/06/2022 à 21h00**)",
+        date="Date du coaching, format: **jj/mm/aaaa à hh:mm** (Exemple: **19/06/2022 à 21:00**)",
         nombre_de_participants="Le nombre de personne que tu souhaite coach, par defaut à 1",
         image_url="L'url de l'image affiché sur la fiche de l'évenement, par defaut ta photo de profil",
         organisateur="L'organisateur du coaching, par defaut toi",
     )
-    async def createCoaching(self, ctx: Interaction, date: str, nombre_de_participants: int = 1, image_url: str = None, organisateur: str = None):
+    async def createCoaching(self, ctx: Interaction, date: str, nombre_de_participants: int = 1, image_url: str = None, organisateur: Member = None):
         await createCoaching.createCoaching(self, ctx, date, nombre_de_participants, image_url, organisateur)
 
     @createCoaching.error

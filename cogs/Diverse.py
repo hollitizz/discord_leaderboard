@@ -24,14 +24,22 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     async def changeRoleError(self, ctx: Interaction, error: Exception):
         print(error)
         await ctx.response.send_message(
-            f"Une erreur est surevenue, réesaye ou sinon contact un admin",
+            f"Une erreur est survenue, réessaie ou sinon contacte un admin",
             ephemeral=True
         )
 
-    @app_commands.command(name="roll", description="Get a random number between two integers")
-    @app_commands.describe(min="Minimum roll point, 1 by default", max="Maximum roll point, 6 by default")
+    @app_commands.command(name="roll", description="Récuperer un nombre random entre deux int")
+    @app_commands.describe(min="borne inférieure, 1 par defaut", max="borne supérieure, 6 par défaut")
     async def roll(self, ctx: Interaction, min: int=1, max: int=6):
         await roll.roll(self, ctx, min, max)
+
+    @app_commands.command(name="roll_in_list", description="recuperer une string random dans une liste")
+    @app_commands.describe(
+        liste = "la liste de string parmis laquelle tu veux faire ton tirage",
+        separateur = "caractère séparant les string, par defaut ' '"
+    )
+    async def setup(self, ctx, liste: str, separateur:str = " "):
+        await roll.rollInList(self, ctx, liste, separateur)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])

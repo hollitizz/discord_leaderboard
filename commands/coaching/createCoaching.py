@@ -15,7 +15,7 @@ async def createCoaching(self, ctx: Interaction, date: str, nombre_de_participan
     if not organisateur:
         organisateur = ctx.user.name
     guild: Guild = self.bot.get_guild(self.bot.guild_id)
-    formated_date: datetime = datetime.strptime(date, '%d/%m/%Y à %Hh%M')
+    formated_date: datetime = datetime.strptime(date, '%d/%m/%Y à %H:%M')
     formated_date = formated_date.astimezone(tz=tz.gettz("Europe/Paris"))
     msg =   f"{ctx.user.mention} organise un coaching **{date}**\n"\
             f"cliquer sur **intéressé** pour vous inscrire"\
