@@ -42,5 +42,16 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     async def refreshError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
 
+    @app_commands.command(name="sim_join", description="Simule un join")
+    @app_commands.default_permissions(administrator=True)
+    async def simJoin(self, ctx: Interaction):
+        if not self.bot.is_test_mode:
+            raise Exception("you can't use this command in production")
+        self.bot.dispatch('member_join', ctx.user)
+
+    @simJoin.error
+    async def simJoinError(self, ctx: Interaction, error: Exception):
+        await ctx.response.send_message(f"{error}", ephemeral=True)
+
 async def setup(bot: Setup):
     await bot.add_cog(Leaderboard(bot), guilds=[Object(id=bot.guild_id)])

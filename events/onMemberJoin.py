@@ -41,7 +41,7 @@ async def onMemberJoin(self: Setup, member: Member):
     new_member_role = getRoleByName(member.guild, "Nouveau")
     await member.add_roles(new_member_role)
     pos = checkIdExist(self.db.leaderboard.users, tag)
-    if (pos != -1):
+    if pos != -1 and not self.is_test_mode:
         return
     guild = self.get_guild(self.guild_id)
     await member.create_dm()
@@ -57,10 +57,8 @@ async def onMemberJoin(self: Setup, member: Member):
         )
         await channel.send(first_message)
     new_user = await askNewMember(self, member, channel)
-    await channel.send("test", view=buttonHandler(guild))
+    await channel.send("Tu peux maintenant choisir ton main rôle", view=buttonHandler(guild))
     await createPlayer(self, new_user)
-
-
     await member.remove_roles(new_member_role)
     if channel and not isinstance(channel, DMChannel):
         await asyncio.sleep(10)
