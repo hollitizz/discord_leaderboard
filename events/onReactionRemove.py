@@ -8,4 +8,4 @@ async def onReactionRemove(self: Setup, reaction: Reaction, user: User):
         return
     coaching.participants.remove(user.mention)
     self.db.save()
-    return self
+    return

@@ -1,8 +1,10 @@
+from typing import List
 from discord.ext import commands
-from discord import app_commands, Interaction, Object
+from discord import Member, app_commands, Interaction, Object
 
 from commands.diverse import ping
 from commands.diverse import changeRole
+from commands.diverse import roll
 from utils.myTypes import Setup
 
 
@@ -25,6 +27,11 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
             f"Une erreur est surevenue, réesaye ou sinon contact un admin",
             ephemeral=True
         )
+
+    @app_commands.command(name="roll", description="Get a random number between two integers")
+    @app_commands.describe(min="Minimum roll point, 1 by default", max="Maximum roll point, 6 by default")
+    async def roll(self, ctx: Interaction, min: int=1, max: int=6):
+        await roll.roll(self, ctx, min, max)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])

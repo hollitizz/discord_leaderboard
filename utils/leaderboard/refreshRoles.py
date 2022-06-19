@@ -61,5 +61,5 @@ async def refreshRoles(self: Setup):
         except Exception as e:
             print(e)
             if not self.is_test_mode:
-                pass
-                #TODO: automatic deletion of the user
+                users.remove(user)
+                self.db.save()

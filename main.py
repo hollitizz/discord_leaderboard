@@ -15,6 +15,7 @@ from commands.leaderboard import refresh
 from utils.DbHandler import DbHandler
 
 
+from events.onScheduledEventCreate import onScheduledEventCreate
 from events.onReactionAdd import onReactionAdd
 from events.onReactionRemove import onReactionRemove
 from events.onMemberRemove import onMemberRemove
@@ -80,6 +81,9 @@ class Setup(commands.Bot, DbHandler):
 
     async def on_message(self, message):
         await onMessage(self, message)
+
+    async def on_scheduled_event_create(self, event):
+        await onScheduledEventCreate(self, event)
 
     async def on_ready(self):
         await onReady(self)

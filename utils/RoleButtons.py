@@ -18,7 +18,6 @@ class buttonHandler(discord.ui.View):
     async def buttonTop(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = self.guild.get_member(interaction.user.id)
         for role in member.roles:
-            print(role.name)
             if role.name in ["Top", "Jungle", "Mid", "ADC", "Support"] and button.label != role.name:
                 await member.remove_roles(role)
         if button.label not in member.roles:
@@ -31,7 +30,6 @@ class buttonHandler(discord.ui.View):
     async def buttonJungle(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = self.guild.get_member(interaction.user.id)
         for role in member.roles:
-            print(role.name)
             if role.name in ["Top", "Jungle", "Mid", "ADC", "Support"] and button.label != role.name:
                 await member.remove_roles(role)
         if button.label not in member.roles:
@@ -44,7 +42,6 @@ class buttonHandler(discord.ui.View):
     async def buttonMid(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = self.guild.get_member(interaction.user.id)
         for role in member.roles:
-            print(role.name)
             if role.name in ["Top", "Jungle", "Mid", "ADC", "Support"] and button.label != role.name:
                 await member.remove_roles(role)
         if button.label not in member.roles:
@@ -57,7 +54,6 @@ class buttonHandler(discord.ui.View):
     async def buttonADC(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = self.guild.get_member(interaction.user.id)
         for role in member.roles:
-            print(role.name)
             if role.name in ["Top", "Jungle", "Mid", "ADC", "Support"] and button.label != role.name:
                 await member.remove_roles(role)
         if button.label not in member.roles:
@@ -70,7 +66,6 @@ class buttonHandler(discord.ui.View):
     async def buttonSupport(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = self.guild.get_member(interaction.user.id)
         for role in member.roles:
-            print(role.name)
             if role.name in ["Top", "Jungle", "Mid", "ADC", "Support"] and button.label != role.name:
                 await member.remove_roles(role)
         if button.label not in member.roles:
