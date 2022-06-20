@@ -1,9 +1,12 @@
 from discord.ext import commands
-from discord import app_commands, Interaction, Object
+from discord import Member, app_commands, Interaction, Object
+from discord.app_commands import Choice
 
 
 from commands.leaderboard import refresh
 from commands.leaderboard import register
+from commands.leaderboard import addPlayer
+from commands.leaderboard import setLeaderboardVisibility
 
 from utils.leaderboard import refreshRoles
 
@@ -42,16 +45,25 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     async def refreshError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
 
-    @app_commands.command(name="sim_join", description="Simule un join")
-    @app_commands.default_permissions(administrator=True)
-    async def simJoin(self, ctx: Interaction):
-        if not self.bot.is_test_mode:
-            raise Exception("you can't use this command in production")
-        self.bot.dispatch('member_join', ctx.user)
+    @app_commands.command(name="add_player", description="Ajoute un joueur au Leaderboard")
+    @app_commands.default_permissions(manage_messages=True)
+    @app_commands.checks.has_role("bot admin")
+    async def addPlayer(self, ctx: Interaction, membre: Member, summoner_name: str):
+        await addPlayer.addPlayer(self.bot, ctx, membre, summoner_name)
 
-    @simJoin.error
-    async def simJoinError(self, ctx: Interaction, error: Exception):
+    @addPlayer.error
+    async def addPlayerError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"{error}", ephemeral=True)
+
+    @app_commands.command(name="set_leaderboard_visibility", description="Choisis si tu veux apparaître dans le Leaderboard")
+    @app_commands.choices(visible=[Choice(name="Apparaître", value=0), Choice(name="Ne pas apparaître", value=1)])
+    async def setLeaderboardVisibility(self, ctx: Interaction, visible: int):
+        await setLeaderboardVisibility.setLeaderboardVisibility(self.bot, ctx, bool(visible))
+
+    @setLeaderboardVisibility.error
+    async def setLeaderboardVisibilityError(self, ctx: Interaction, error: Exception):
+        await ctx.response.send_message(f"{error}", ephemeral=True)
+
 
 async def setup(bot: Setup):
     await bot.add_cog(Leaderboard(bot), guilds=[Object(id=bot.guild_id)])

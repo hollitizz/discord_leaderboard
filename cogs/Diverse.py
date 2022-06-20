@@ -5,6 +5,7 @@ from discord import Member, app_commands, Interaction, Object
 from commands.diverse import ping
 from commands.diverse import changeRole
 from commands.diverse import roll
+from commands.diverse import getOpgg
 from utils.myTypes import Setup
 
 
@@ -36,10 +37,15 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     @app_commands.command(name="roll_in_list", description="recuperer une string random dans une liste")
     @app_commands.describe(
         liste = "la liste de string parmis laquelle tu veux faire ton tirage",
-        separateur = "caractère séparant les string, par defaut ' '"
+        separateur = "caractère séparant les chaînes de caractères, par defaut ' '"
     )
-    async def setup(self, ctx, liste: str, separateur:str = " "):
+    async def rollInList(self, ctx, liste: str, separateur:str = " "):
         await roll.rollInList(self, ctx, liste, separateur)
+
+    @app_commands.command(name="get_opgg", description="Recuperer le opgg d'un ou plusieurs joueurs")
+    @app_commands.describe(liste="Mention du joueur voulu/Liste de mention de joueur", séparateur="caractère séparant les mentions, par defaut ' '")
+    async def getOpgg(self, ctx: Interaction, liste: str, séparateur: str = " "):
+        await getOpgg.getOpgg(self, ctx, liste, séparateur)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])

@@ -50,7 +50,7 @@ class Setup(commands.Bot, DbHandler):
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
                 await self.load_extension(f"cogs.{cogName}")
-            # await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+            await bot.tree.sync(guild=discord.Object(id=self.guild_id))
         self.backgroundTask.start()
 
     @tasks.loop(minutes=5)
@@ -90,7 +90,7 @@ class Setup(commands.Bot, DbHandler):
 
 
 try:
-    bot = Setup(is_test_mode=True)
+    bot = Setup(is_test_mode=False)
     bot.run(bot.token, reconnect=True)
 except KeyboardInterrupt:
     print("\nExiting...")

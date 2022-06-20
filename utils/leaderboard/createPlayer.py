@@ -5,7 +5,6 @@ from utils.myTypes import User, Setup
 
 async def createPlayer(self: Setup, user: User):
     users = self.db.leaderboard.users
-    leaderboard = self.db.leaderboard
     player_exist = checkIdExist(users, user.tag)
     if (player_exist == -1):
         users.append(user)

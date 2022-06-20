@@ -1,6 +1,6 @@
 from discord import Guild, User, Role
 
-from utils.myTypes import Setup
+from utils.myTypes import Setup, UnknownUser
 
 ROLE_LIST = [
     "Unranked",
@@ -41,7 +41,7 @@ async def refreshUserRole(guild: Guild, user):
     try:
         discord_user, user_roles = await getUser(guild, user.tag)
     except:
-        raise Exception(f"{user.tag} is not on this server, please delete him")
+        raise UnknownUser(f"{user.tag} is not on this server, please delete him")
     for role in user_roles:
         if role.name == "mets ton OPGG":
             await unsetRole(discord_user, role)
@@ -58,8 +58,9 @@ async def refreshRoles(self: Setup):
     for user in users:
         try:
             await refreshUserRole(guild, user)
-        except Exception as e:
-            print(e)
+        except UnknownUser as e:
             if not self.is_test_mode:
                 users.remove(user)
                 self.db.save()
+        except Exception as e:
+            print(e)

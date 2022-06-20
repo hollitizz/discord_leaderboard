@@ -7,6 +7,10 @@ from utils.DbHandler import DbHandler
 from utils.leaderboard.getPlayerStats import getPlayerStats
 
 
+class UnknownUser(Exception):
+    pass
+
+
 class User():
     def __init__(self, tag, name, id):
         self.tag: str = tag
@@ -15,6 +19,7 @@ class User():
         self.rank: int = 1
         self.lp: int = 0
         self.id: str = id
+        self.is_displayed: bool = True
 
     async def setStats(self, riot_token: str):
         try:
