@@ -61,6 +61,6 @@ async def refreshRoles(self: Setup):
         except UnknownUser as e:
             if not self.is_test_mode:
                 users.remove(user)
-                self.db.save()
         except Exception as e:
             print(e)
+    self.save()
