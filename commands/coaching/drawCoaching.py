@@ -17,5 +17,5 @@ async def drawCoaching(self, ctx: Interaction):
         if event.name.startswith("Session de Coaching") and (user.name.lower() in event.name.lower() or see_all):
             user_events.append(event)
     if not user_events:
-        raise Exception("Tu n'a pas encore créé d'évènement de coaching. Tu peux utiliser la commande `create_coaching` pour en créer un !")
+        raise Exception("Tu n'a pas encore d'évènement de coaching prévu. Tu peux utiliser la commande `create_coaching` pour en créer un !")
     await ctx.edit_original_message(content="", view=drawCoachingView(self.bot, user_events))

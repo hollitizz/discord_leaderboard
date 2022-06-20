@@ -29,10 +29,7 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
 
     @drawCoaching.error
     async def drawCoachingError(self, ctx: Interaction, error: Exception):
-        if ctx.response.is_done():
-            ctx.response.edit_message(content=error, view=None)
-        else:
-            ctx.response.send_message(content=error, ephemeral=True)
+        await ctx.edit_original_message(content=error, view=None)
 
 async def setup(bot: Setup):
     await bot.add_cog(Coaching(bot), guilds=[Object(id=bot.guild_id)])
