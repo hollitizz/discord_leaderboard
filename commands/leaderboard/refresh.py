@@ -12,7 +12,7 @@ async def loopedRefresh(self):
     await refreshStats(self)
     print(f"[{getTime('%H:%M:%S')}]: Sorting Leaderboard...", end="\r")
     await sortLeaderboard(self)
-    print(f"[{getTime('%H:%M:%S')}]: Refresing Roles...    ", end="\r")
+    print(f"[{getTime('%H:%M:%S')}]: Refreshing Roles...    ", end="\r")
     if not self.is_test_mode:
         await refreshRoles(self)
     print(f"[{getTime('%H:%M:%S')}]: Refresh Done !        ")
