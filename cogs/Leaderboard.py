@@ -56,7 +56,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     @app_commands.command(name="set_leaderboard_visibility", description="Choisis si tu veux apparaître dans le Leaderboard")
     @app_commands.choices(visible=[Choice(name="Apparaître", value=0), Choice(name="Ne pas apparaître", value=1)])
     async def setLeaderboardVisibility(self, ctx: Interaction, visible: int):
-        await setLeaderboardVisibility.setLeaderboardVisibility(self.bot, ctx, bool(visible))
+        await setLeaderboardVisibility.setLeaderboardVisibility(self, ctx, bool(visible))
 
     @setLeaderboardVisibility.error
     async def setLeaderboardVisibilityError(self, ctx: Interaction, error: Exception):
