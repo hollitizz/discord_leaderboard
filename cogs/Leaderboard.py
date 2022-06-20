@@ -20,7 +20,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @register.error
     async def registerError(self, ctx: Interaction, error: Exception):
-        print(f"{error}")
+        await ctx.response.send_message(f"{error}")
 
     @app_commands.command(name="refresh", description="Rafraichis le Leaderboard")
     @app_commands.default_permissions(manage_messages=True)
