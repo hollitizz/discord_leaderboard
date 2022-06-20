@@ -4,3 +4,5 @@ python-dotenv
 requests
 urllib3
 validators
+pillow
+python-dateutil
