@@ -5,6 +5,5 @@ from utils.myTypes import Setup
 
 
 async def onMessage(self: Setup, message: Message):
-    if message.channel.id in self.db.opgg_channels\
-        and not message.author.self and checkOpggLinkIsValid(message):
+    if message.channel.id in self.db.opgg_channels and checkOpggLinkIsValid(message):
         await addPlayerOpgg(self, message)

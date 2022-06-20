@@ -3,10 +3,7 @@ from discord import Member, app_commands, Interaction, Object
 from discord.app_commands import Choice
 
 
-from commands.leaderboard import refresh
-from commands.leaderboard import register
-from commands.leaderboard import addPlayer
-from commands.leaderboard import setLeaderboardVisibility
+from commands.leaderboard import refresh, register, addPlayer, setLeaderboardVisibility
 
 from utils.leaderboard import refreshRoles
 
@@ -39,8 +36,9 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     @app_commands.default_permissions(manage_messages=True)
     @app_commands.checks.has_role("bot admin")
     async def refreshRolesCommand(self, ctx: Interaction):
+        await ctx.response.defer(thinking=True, ephemeral=True)
         await refreshRoles.refreshRoles(self.bot)
-
+        await ctx.edit_original_message(content="Roles rafraichis !")
     @refresh.error
     async def refreshError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
