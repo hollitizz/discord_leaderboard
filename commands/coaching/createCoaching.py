@@ -2,7 +2,6 @@
 
 from datetime import datetime, timedelta
 import io
-from turtle import mode
 from PIL import Image
 from discord import ChannelType, EntityType, Guild, Interaction, VoiceChannel
 from dateutil import tz
