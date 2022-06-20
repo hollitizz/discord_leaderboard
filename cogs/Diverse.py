@@ -18,7 +18,7 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
 
     @app_commands.command(name="change_role", description="Te permet de changer ton main role")
     async def changeRole(self, ctx: Interaction):
-        await changeRole.changeRole(ctx)
+        await changeRole.changeRole(self, ctx)
 
     @changeRole.error
     async def changeRoleError(self, ctx: Interaction, error: Exception):
