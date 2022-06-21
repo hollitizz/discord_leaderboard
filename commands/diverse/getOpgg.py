@@ -17,7 +17,7 @@ async def getOpgg(self, ctx: Interaction, req: str, sep: str):
     for user_tag in member_list:
         pos = checkIdExist(self.bot.db.leaderboard.users, user_tag.mention)
         if pos == -1:
-            msg.append(f"{user_tag.mention} semble ne pas avoir mit son opgg !")
+            msg.append(f"{user_tag.mention} semble ne pas avoir mis son opgg !")
         else:
             msg.append(f"{user_tag.mention} : https://euw.op.gg/summoners/euw/{self.bot.db.leaderboard.users[pos].name}")
             multi += f"{self.bot.db.leaderboard.users[pos].name},"
