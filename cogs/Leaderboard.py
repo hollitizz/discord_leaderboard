@@ -21,7 +21,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @register.error
     async def registerError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error}")
+        await ctx.response.send_message(f"{error.args[0]}")
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="refresh", description="Rafraichis le Leaderboard")
@@ -56,7 +56,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @addPlayer.error
     async def addPlayerError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error}", ephemeral=True)
+        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="set_leaderboard_visibility", description="Choisis si tu veux apparaître dans le Leaderboard")
@@ -66,7 +66,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @setLeaderboardVisibility.error
     async def setLeaderboardVisibilityError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error}", ephemeral=True)
+        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
 

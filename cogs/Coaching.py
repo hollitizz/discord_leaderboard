@@ -22,7 +22,7 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
 
     @createCoaching.error
     async def createCoachingError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error}", ephemeral=True)
+        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="draw_coaching", description="Tire au sort une personne pour le coaching")
@@ -31,7 +31,7 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
 
     @drawCoaching.error
     async def drawCoachingError(self, ctx: Interaction, error: Exception):
-        await ctx.edit_original_message(content=error, view=None)
+        await ctx.edit_original_message(content=error.args[0], view=None)
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
 async def setup(bot: Setup):

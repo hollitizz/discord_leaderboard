@@ -49,8 +49,8 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
 
     @getOpgg.error
     async def getOpggError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error.args}", ephemeral=True)
-        print(f"{ctx.user} got : {error.args}", file=sys.stderr)
+        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
+        print(f"{ctx.user} got : {error}", file=sys.stderr)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])
