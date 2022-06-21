@@ -8,6 +8,26 @@ from utils.leaderboard.getPlayerStats import API_RANK
 from utils.leaderboard.refreshRoles import ROLE_LIST, getRoleByName
 from utils.RoleButtons import buttonHandler
 
+WELCOME_MESSAGE ="""
+--------------------------------------------------------------------------------------------------------------
+
+☆ Pour bien commencer (et après avoir accepté les règles), tu peux :
+
+✦ Tu peux envoyer le lien de ton opgg (https://euw.op.gg/) dans le channel <#832306284593152050> si tu le souhaites !
+
+✦ Tu peux également te présenter dans <#834846943858786384>
+
+✦ Tu cherches un ou plusieurs mates ? Le channel <#834882281360457738> est fait pour toi !
+
+✦ Si tu as besoin d'aide pour t'améliorer dans le jeu n'hésite pas à en faire la demande !
+
+✦ Des events sont régulièrement organisés alors garde toujours un œil sur le channel <#834835968791150612> ! :SorakaLove:
+
+--------------------------------------------------------------------------------------------------------------
+
+https://discord.gg/t4RbZfM7aY
+"""
+
 def getBotRank(rank: int):
     for rank_api, rank_int in API_RANK.items():
         if rank_int == rank:
@@ -60,6 +80,7 @@ async def onMemberJoin(self: Setup, member: Member):
     await channel.send("Tu peux maintenant choisir ton main rôle", view=buttonHandler(guild))
     await createPlayer(self, new_user)
     await member.remove_roles(new_member_role)
+    await channel.send(WELCOME_MESSAGE)
     if channel and not isinstance(channel, DMChannel):
         await asyncio.sleep(10)
         await channel.delete()
