@@ -16,8 +16,6 @@ from utils.DbHandler import DbHandler
 
 
 from events.onScheduledEventCreate import onScheduledEventCreate
-from events.onReactionAdd import onReactionAdd
-from events.onReactionRemove import onReactionRemove
 from events.onMemberRemove import onMemberRemove
 from events.onMemberJoin import onMemberJoin
 from events.onMessage import onMessage
@@ -66,12 +64,6 @@ class Setup(commands.Bot, DbHandler):
     @backgroundTask.before_loop
     async def waitBackgroundTask(self):
         await self.wait_until_ready()
-
-    async def on_reaction_add(self, reaction, user):
-        await onReactionAdd(self, reaction, user)
-
-    async def on_reaction_remove(self, reaction, user):
-        await onReactionRemove(self, reaction, user)
 
     async def on_member_join(self, member):
         await onMemberJoin(self, member)
