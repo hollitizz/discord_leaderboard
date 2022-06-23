@@ -71,6 +71,12 @@ class Setup(commands.Bot, DbHandler):
     async def on_member_remove(self, member):
         await onMemberRemove(self, member)
 
+    async def on_reaction_add(self, member):
+        pass
+
+    async def on_reaction_remove(self, member):
+        pass
+        
     async def on_message(self, message):
         await onMessage(self, message)
 
