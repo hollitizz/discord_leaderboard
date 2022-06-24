@@ -48,7 +48,7 @@ class Setup(commands.Bot, DbHandler):
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
                 await self.load_extension(f"cogs.{cogName}")
-            # await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+            await bot.tree.sync(guild=discord.Object(id=self.guild_id))
         self.backgroundTask.start()
 
     @tasks.loop(minutes=5)
@@ -71,12 +71,6 @@ class Setup(commands.Bot, DbHandler):
     async def on_member_remove(self, member):
         await onMemberRemove(self, member)
 
-    async def on_reaction_add(self, member):
-        pass
-
-    async def on_reaction_remove(self, member):
-        pass
-        
     async def on_message(self, message):
         await onMessage(self, message)
 
