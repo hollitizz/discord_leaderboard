@@ -19,12 +19,12 @@
         ],
         "users": [
             {
-                "tag": "<@543847620427251713>",
-                "name": "AChar\u00f87",
+                "tag": "<@300928722939281409>",
+                "name": "Only HappY",
                 "tier": 7,
                 "rank": 1,
-                "lp": 121,
-                "id": "QJla6OVQQHqK6YP7FYsvbncTNWYADan986cW5ddA-MQXhuM",
+                "lp": 343,
+                "id": "9HKSH7DBpoHrtjn4BYeHa3ytwpLmHolUHF91uAF2ykq6_To",
                 "is_displayed": true
             },
             {
@@ -32,35 +32,8 @@
                 "name": "Flacx",
                 "tier": 7,
                 "rank": 1,
-                "lp": 95,
+                "lp": 190,
                 "id": "YVix18clMZ9zc9urQlkdRrNHzbrPKYFDj2g6nkbRuzAEuz4",
-                "is_displayed": true
-            },
-            {
-                "tag": "<@236100442965147648>",
-                "name": "LirBlast",
-                "tier": 7,
-                "rank": 1,
-                "lp": 1,
-                "id": "rD5Rp9-4ZzPwBiaEakGX_ebHSf1p3FbYVc21qd58RUyIi8A",
-                "is_displayed": true
-            },
-            {
-                "tag": "<@300928722939281409>",
-                "name": "Only HappY",
-                "tier": 6,
-                "rank": 1,
-                "lp": 100,
-                "id": "9HKSH7DBpoHrtjn4BYeHa3ytwpLmHolUHF91uAF2ykq6_To",
-                "is_displayed": true
-            },
-            {
-                "tag": "<@291296532177747968>",
-                "name": "kelyur",
-                "tier": 6,
-                "rank": 1,
-                "lp": 56,
-                "id": "fh6JxcvbQ7cEmt65GasvDFvrnQNhf0mzj0aPJ1yj4x8KUzw",
                 "is_displayed": true
             },
             {
@@ -68,7 +41,7 @@
                 "name": "Obbito",
                 "tier": 6,
                 "rank": 1,
-                "lp": 2,
+                "lp": 66,
                 "id": "0kCitGzBAYAHHchS4UQznrSVnftoGk7q4vXLgwHOCjP_QAo",
                 "is_displayed": true
             },
@@ -77,8 +50,17 @@
                 "name": "Trei Degekko",
                 "tier": 6,
                 "rank": 1,
-                "lp": 1,
+                "lp": 17,
                 "id": "VjBszG21rVdqU-CEclH66TK-C8UU1-CuZvipgT-g9P3z9nk",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@236100442965147648>",
+                "name": "LirBlast",
+                "tier": 6,
+                "rank": 1,
+                "lp": 15,
+                "id": "rD5Rp9-4ZzPwBiaEakGX_ebHSf1p3FbYVc21qd58RUyIi8A",
                 "is_displayed": true
             },
             {
@@ -86,26 +68,44 @@
                 "name": "ChirasaTheQueen",
                 "tier": 6,
                 "rank": 2,
-                "lp": 25,
+                "lp": 70,
                 "id": "mQGEdB_LhT2eRL2zgq3WYq-2SGWFxe9m7_T1uAGLhLugH4g4",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@291296532177747968>",
+                "name": "kelyur",
+                "tier": 6,
+                "rank": 2,
+                "lp": 69,
+                "id": "fh6JxcvbQ7cEmt65GasvDFvrnQNhf0mzj0aPJ1yj4x8KUzw",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@334339794978996224>",
+                "name": "Nidayuku",
+                "tier": 6,
+                "rank": 2,
+                "lp": 26,
+                "id": "VXm_-gPULq_4M2GO95EhsAPtzDcOKjvio_xOzvM0yQWyrYA",
                 "is_displayed": true
             },
             {
                 "tag": "<@265469774589329408>",
                 "name": "raralol",
                 "tier": 6,
-                "rank": 4,
-                "lp": 45,
+                "rank": 3,
+                "lp": 2,
                 "id": "DHQnvx_1GLP-5EJXZul-lbNsTWsq3n2gOfFiLXifG69K4u4",
                 "is_displayed": true
             },
             {
-                "tag": "<@216951030800187392>",
-                "name": "Its Koj\u00ec",
-                "tier": 6,
-                "rank": 4,
-                "lp": 20,
-                "id": "ED1wQMWUBlZcyMvPv3ECJw-y9bz8p21t_ECKE0j2oYEnXnM",
+                "tag": "<@219816199012220928>",
+                "name": "Stocifax",
+                "tier": 5,
+                "rank": 1,
+                "lp": 75,
+                "id": "KnB9Pr0TGWpE5OGGVWuy7-WYsUaCFIqYQ7zGW4T3iY7haXyU",
                 "is_displayed": true
             },
             {
@@ -113,35 +113,89 @@
                 "name": "PIXEL SA M\u00c8RE",
                 "tier": 5,
                 "rank": 1,
-                "lp": 72,
+                "lp": 61,
                 "id": "dUMOwONrJcssdvXP4zX0V4FHqUsaFd78Ip-g9_Gmdw7G-hU",
                 "is_displayed": true
             },
             {
-                "tag": "<@303851829564014593>",
-                "name": "CASPyrellDecimus",
+                "tag": "<@652883879065157662>",
+                "name": "KC l\u00e9s couilles",
                 "tier": 5,
-                "rank": 3,
-                "lp": 0,
-                "id": "hLl9qo6I38pyO7KmmVh6ZMDntF0Am1_CsBlvu2xwAN5yqNc",
+                "rank": 1,
+                "lp": 58,
+                "id": "tJlzqqX0pojYxSUfAj-eniPJD0YkkMYSZpYZZBN2k2ZEvhE",
                 "is_displayed": true
             },
             {
-                "tag": "<@948190363728900116>",
-                "name": "HiImAnes",
+                "tag": "<@216951030800187392>",
+                "name": "Its Koj\u00ec",
                 "tier": 5,
-                "rank": 4,
-                "lp": 59,
-                "id": "Sv3SA0IZrW4R4bFA24dP3ima1oLse6l3C2xLsopI44ijtSA",
+                "rank": 1,
+                "lp": 14,
+                "id": "ED1wQMWUBlZcyMvPv3ECJw-y9bz8p21t_ECKE0j2oYEnXnM",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@220275536289595392>",
+                "name": "Usah",
+                "tier": 5,
+                "rank": 3,
+                "lp": 92,
+                "id": "5Gr4IuxNUyhLOmOkXA_i0iuTRlQySThniPZtlPjkGnePCvg",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@212690060863078400>",
+                "name": "Yannis VIX",
+                "tier": 5,
+                "rank": 3,
+                "lp": 80,
+                "id": "19lQ6wDvhIW6caSG3ytAzCeZBZGuxDaVFOIOe_RVngaYw9rKx3bfCMuP3w",
                 "is_displayed": true
             },
             {
                 "tag": "<@604579577809076224>",
                 "name": "Zacope",
                 "tier": 5,
-                "rank": 4,
-                "lp": 37,
+                "rank": 3,
+                "lp": 43,
                 "id": "zcXph22FeM4ZSw0C6FtPrQN4IDXnspXNEiLeYE99A_pJQlCj",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@203968119574626305>",
+                "name": "VietKieu",
+                "tier": 5,
+                "rank": 3,
+                "lp": 4,
+                "id": "kvVgng4WDpom0fCvJjO9HZ5x6LxEyrddOpVKwHNt8PVZppc",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@948190363728900116>",
+                "name": "HiImAnes",
+                "tier": 5,
+                "rank": 3,
+                "lp": 0,
+                "id": "Sv3SA0IZrW4R4bFA24dP3ima1oLse6l3C2xLsopI44ijtSA",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@303851829564014593>",
+                "name": "CASPyrellDecimus",
+                "tier": 5,
+                "rank": 4,
+                "lp": 69,
+                "id": "hLl9qo6I38pyO7KmmVh6ZMDntF0Am1_CsBlvu2xwAN5yqNc",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@565475830445244435>",
+                "name": "NeyviuS Decimus",
+                "tier": 5,
+                "rank": 4,
+                "lp": 50,
+                "id": "IAKNJo0vKsWUTerN5tsGd_9-Mo4nb0qI9-rpmrLNK_ZpSY86",
                 "is_displayed": true
             },
             {
@@ -154,21 +208,57 @@
                 "is_displayed": true
             },
             {
+                "tag": "<@485465059343204352>",
+                "name": "La Rondelle",
+                "tier": 5,
+                "rank": 4,
+                "lp": 33,
+                "id": "QmcKXZ7wkb3EVMm4Z3QrZqmGNK78bCakaEpCUlz25d80vkY",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@410359322355171328>",
                 "name": "Sorrion",
                 "tier": 5,
                 "rank": 4,
-                "lp": 12,
+                "lp": 21,
                 "id": "QMsYnLU0eOs8fTTWwcHqxi_x-bt1BKKf5PMJLMA5uncg0SQk",
                 "is_displayed": true
             },
             {
-                "tag": "<@905479749617455154>",
-                "name": "chimique",
+                "tag": "<@237232386213937152>",
+                "name": "CTH GlyDers",
+                "tier": 5,
+                "rank": 4,
+                "lp": 13,
+                "id": "18MDoDsvgBtMmutvvJIvf-txJ8S2EMnj9vx-IKMd828naL8",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@233369039802466308>",
+                "name": "SadIy",
+                "tier": 5,
+                "rank": 4,
+                "lp": 1,
+                "id": "PNGGoUWvd1-PKLOBp52K4FfOrFFudGQrkykeT6RO19Y3GN4",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@300319085479329792>",
+                "name": "TheROOAR Decimus",
+                "tier": 5,
+                "rank": 4,
+                "lp": 1,
+                "id": "TWxy9YDr_argfRTsg248PXaKNKKw2l_hT9XCGSEOax13bbQ",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@632965010431410186>",
+                "name": "Toto fan de Mcdo",
                 "tier": 4,
                 "rank": 1,
-                "lp": 67,
-                "id": "c7K06NuukIn9x7kCTPvcfgzA3OVQs-_rb9VnMfYP6S4xC6A",
+                "lp": 78,
+                "id": "sQLPkrh8tn575teOEXA5L05_Aah6yiWJBUsMZ1n-d2cDw91y",
                 "is_displayed": true
             },
             {
@@ -176,8 +266,17 @@
                 "name": "baguette du sud",
                 "tier": 4,
                 "rank": 1,
-                "lp": 19,
+                "lp": 18,
                 "id": "6J_5SFFPxiZY9k2pAetoj5MYp-yRiGJ00xkUCm0RgV4bYoY",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@544180327548190731>",
+                "name": "GeNeRaLiGloO",
+                "tier": 4,
+                "rank": 2,
+                "lp": 87,
+                "id": "Jg5XUT572-t31CRbDFKwY92vMemqXNAFXjIgGUunrapDpI4c",
                 "is_displayed": true
             },
             {
@@ -190,12 +289,30 @@
                 "is_displayed": true
             },
             {
-                "tag": "<@262784138380050432>",
-                "name": "UwU Hermino",
+                "tag": "<@98774113140613120>",
+                "name": "Ameyy",
                 "tier": 4,
                 "rank": 2,
                 "lp": 0,
+                "id": "jgOkeNs4WRXhyHn62X_3WYLYWzjumb3GFtX8F4yNrP86LDw",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@262784138380050432>",
+                "name": "UwU Hermino",
+                "tier": 4,
+                "rank": 3,
+                "lp": 83,
                 "id": "LbYc6DA4Zw2ACl-264F0h74D_QO2PZ8NpL3FgLVnlPnyLEw",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@863964067559768066>",
+                "name": "Ch\u00e2teau ambulant",
+                "tier": 4,
+                "rank": 3,
+                "lp": 65,
+                "id": "010AnJP_L2nuE9iaUPm8aMOS7oS8lxC0cPKN0x3fLlkXENpK",
                 "is_displayed": true
             },
             {
@@ -203,17 +320,26 @@
                 "name": "Psy\u03bao Decimus",
                 "tier": 4,
                 "rank": 3,
-                "lp": 0,
+                "lp": 41,
                 "id": "_klihQaDknRgXFfBiydPpHep5hFWsSUu0oI_vNSGmIFI3p0",
                 "is_displayed": true
             },
             {
-                "tag": "<@482096567273390100>",
-                "name": " Somalienmalien",
+                "tag": "<@351038896756359170>",
+                "name": "Trynh0r",
+                "tier": 4,
+                "rank": 3,
+                "lp": 16,
+                "id": "gNvaLmbc-1lP3hWUTZ7pWmg-bFlfY9lt7bD0unLLRO3539Tu",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@223937496805801984>",
+                "name": "Kalibor",
                 "tier": 4,
                 "rank": 4,
-                "lp": 90,
-                "id": "YEH-1MNQqjGCRaY4bgNv65FLw3i5H0M_-e4qPO7Gs3LHCsDs",
+                "lp": 63,
+                "id": "KJg5oI9S9qrl7OjwXVlJMFwS9bwLCZ-pnczBKzGOHssEd4w",
                 "is_displayed": true
             },
             {
@@ -226,15 +352,6 @@
                 "is_displayed": true
             },
             {
-                "tag": "<@351038896756359170>",
-                "name": "Trynh0r",
-                "tier": 4,
-                "rank": 4,
-                "lp": 49,
-                "id": "gNvaLmbc-1lP3hWUTZ7pWmg-bFlfY9lt7bD0unLLRO3539Tu",
-                "is_displayed": true
-            },
-            {
                 "tag": "<@!390090672398532609>",
                 "name": "GLN Globulous",
                 "tier": 4,
@@ -244,21 +361,84 @@
                 "is_displayed": true
             },
             {
+                "tag": "<@249317878849863680>",
+                "name": "Aisurufu",
+                "tier": 4,
+                "rank": 4,
+                "lp": 27,
+                "id": "q21GGR3tZQFHNsD27TBo8IWjggX-wCDVesYdqYiZ3e41ULc",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@482096567273390100>",
+                "name": " Somalienmalien",
+                "tier": 4,
+                "rank": 4,
+                "lp": 18,
+                "id": "YEH-1MNQqjGCRaY4bgNv65FLw3i5H0M_-e4qPO7Gs3LHCsDs",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@180040119397384192>",
                 "name": "LeSudiste",
                 "tier": 4,
                 "rank": 4,
-                "lp": 0,
+                "lp": 13,
                 "id": "a4uiLK3VW97LbSz01WIi78YbZjFrali1FgEWuTrS-viisbw",
                 "is_displayed": true
             },
             {
-                "tag": "<@240513857976532993>",
-                "name": "Eryiaa",
+                "tag": "<@!263027434226581504>",
+                "name": "IBNA",
+                "tier": 4,
+                "rank": 4,
+                "lp": 6,
+                "id": "AoAnKi9k8Lw9i3Dw8Chk0_pCJ7qoFuhmk_3P5l3fa8NCvYx_vlOp5jaU3g",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@222008900025581568>",
+                "name": "Hollitizz",
+                "tier": 4,
+                "rank": 4,
+                "lp": 0,
+                "id": "PijxkNq2oJs2jYGtm56us62KR7DadaLdPAUuqWynt1WFW4pG",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@276046284475858945>",
+                "name": "MENTAL WORKOUT",
+                "tier": 4,
+                "rank": 4,
+                "lp": 0,
+                "id": "TsxC2UUGyjLZwi4mZuEek6a6YAtnbLPB_206-dZi5wDuz9Q",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@304919408407478273>",
+                "name": "Useyoname",
+                "tier": 3,
+                "rank": 1,
+                "lp": 81,
+                "id": "E-QVgK5WuHD7KGJAoSa6d9oNqPHUsoddrLrdPP7hF8nqMLo",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@336836330837245953>",
+                "name": "TkDwaNiD",
+                "tier": 3,
+                "rank": 1,
+                "lp": 0,
+                "id": "u6ZVk3I35jqj7mrWFe7pfBHZznZNa4DNJmBc3OYfn3jPFFg",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@217395175045988352>",
+                "name": "niocsa100",
                 "tier": 3,
                 "rank": 2,
-                "lp": 71,
-                "id": "Q_lpIEqLo5oBwNAiZZqvV3kc5GUPT5QeTHiasyXAqeizIys",
+                "lp": 35,
+                "id": "qXKs5p2esUGi-6Axeg8GrL41JuYF4EGaG8gwrzU96CHyBIg",
                 "is_displayed": true
             },
             {
@@ -266,17 +446,53 @@
                 "name": "K8L",
                 "tier": 3,
                 "rank": 2,
-                "lp": 49,
+                "lp": 26,
                 "id": "AxfLZa270N3JfYdZ2Ez4UCCPzihU9okXEOw_3FjSLg61eOQAXwElQCuF3g",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@554688881547542541>",
+                "name": "OnSylas tr\u00e9svite",
+                "tier": 3,
+                "rank": 3,
+                "lp": 72,
+                "id": "C1BIEctvAssf66nBvKOOsQy_xKLvYxGRTCCfMeysrWkr6Ki5CIdvYkcOPA",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@240513857976532993>",
+                "name": "Eryiaa",
+                "tier": 3,
+                "rank": 3,
+                "lp": 63,
+                "id": "Q_lpIEqLo5oBwNAiZZqvV3kc5GUPT5QeTHiasyXAqeizIys",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@102051847178588160>",
+                "name": "Enselin",
+                "tier": 3,
+                "rank": 3,
+                "lp": 49,
+                "id": "wwZZvC7JBmsHI8wN2UUxRHWmBZzxEXvaglBT1iIAQENVYA0",
                 "is_displayed": true
             },
             {
                 "tag": "<@359585385313206284>",
                 "name": "gankbotaregood",
                 "tier": 3,
-                "rank": 2,
-                "lp": 31,
+                "rank": 3,
+                "lp": 48,
                 "id": "bbG_waNVbmFN641Cy_cGve6_Urg9faubmzKCqS7Jl_Og2OdH",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@433037168030777347>",
+                "name": "Cucuro97ll",
+                "tier": 3,
+                "rank": 3,
+                "lp": 37,
+                "id": "1TbqSRkNRZ336jIxmPyqVTbf-D0JDDo4WSkOmXKIZeOkl5XKEl6-OzNiGw",
                 "is_displayed": true
             },
             {
@@ -289,30 +505,129 @@
                 "is_displayed": true
             },
             {
+                "tag": "<@362985923086123008>",
+                "name": "Loicgun",
+                "tier": 3,
+                "rank": 4,
+                "lp": 0,
+                "id": "lVTL4TOt_W4RhSQxCaJvR5gNHoyN6WSLbCeTqcbqjMcZcnQ",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@574182098986860546>",
+                "name": "Cambouie1",
+                "tier": 2,
+                "rank": 3,
+                "lp": 77,
+                "id": "gYdk87d2lEDLZWy81mLislxzwgtVVZY5d1H_Zo8YAmOhpYyam2jN70OMEg",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@268451545710854146>",
+                "name": "God died",
+                "tier": 2,
+                "rank": 3,
+                "lp": 60,
+                "id": "spTNq4Os5SLn3UBaEQmmHjdvki3Yucj8O-aqP5HpqQbziYia",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@970442549804273706>",
                 "name": "Ismail747",
                 "tier": 2,
                 "rank": 3,
-                "lp": 72,
+                "lp": 49,
                 "id": "6cFU7YZpZaBtTGeteAd88XcSKtIJLrjF6n546pq0d05BoRp6",
                 "is_displayed": true
             },
             {
-                "tag": "<@313321854808883200>",
-                "name": "XxAFAMGxX",
-                "tier": 2,
-                "rank": 4,
-                "lp": 48,
-                "id": "_dMd6FO19SyFwdAt2PTWSyBk022TZToIEDkF2t63yYBDgt0fXGc6uu6P8g",
+                "tag": "<@349322519653777408>",
+                "name": "Awdecimus",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "5fZ6bSxWSNxLAXAhyQy7b4zQ5mRc9DqOrPokaHqpumtDIsc",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@332574895017820161>",
+                "name": "lcx ozelda",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "3561JRIwbOXc2Z244oFj4t7lm7ZLqaUGb6lo7zTbuqYWOYQ",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@277767726431207425>",
+                "name": "\u00c9COUTE MOI BIEN",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "cbxKCYmeqfbSDbwV61KMCEwUdTnVIDGBsKZ4hrUNAe6L31ax",
                 "is_displayed": true
             },
             {
                 "tag": "<@389394206109466625>",
                 "name": "wollfety",
-                "tier": 1,
+                "tier": 0,
                 "rank": 1,
-                "lp": 37,
+                "lp": 0,
                 "id": "THGPflBIwJ8TNfoUKJio5l87e_i_eCv7i4_paxQzgHM8hjWK",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@!337183830777659394>",
+                "name": "\u03a9 Martinette \u03a9",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "REz2xhbvuN1mIzVG5dknMKC-3njs3DJRoEunMm5iYap453o",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@424490364645146634>",
+                "name": "Hamasim",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "bYCH39JwbeXWLHpMgJM15AFRKVIyx8lMDaOxpD3MpwX-nX_di_6L5tFY9A",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@202702470160318473>",
+                "name": "Nephitys",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "R18iYYr1MT_PTlk4jjB9hTyKm6sBo3EDERdY2kd9taKqC5U",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@419035229936812037>",
+                "name": "Forickias",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "Yf0BeA-TsSH6U92RQsIc_GFEzyeO6yCbE8EP-KrHVkwDCSbvZ0fBr6skzA",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@!457162037827600385>",
+                "name": "Miiziuky",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "zjxyxuz-_v843GjCXb-M9qb-_lFn3bD3E4WtLNw7QFlrixM_",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@905479749617455154>",
+                "name": "AW LIKE ME",
+                "tier": 0,
+                "rank": 1,
+                "lp": 0,
+                "id": "-X_b3E4QN2hPzPtjr4PxezBi8DXqj_hCSG2r6Q9b3xEDfIpsiHFcOdJcIQ",
                 "is_displayed": true
             }
         ],
