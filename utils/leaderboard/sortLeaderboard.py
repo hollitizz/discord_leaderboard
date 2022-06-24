@@ -31,6 +31,7 @@ async def printLeaderboard(self: Setup):
 
     for i, user in enumerate(users):
         if user.tier == 0 or not user.is_displayed:
+            i -= 1
             continue
         else:
             new_line =  (f'{getRanking(i + 1)} '

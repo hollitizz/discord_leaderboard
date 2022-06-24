@@ -60,7 +60,7 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
         print(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="set_leaderboard_visibility", description="Choisis si tu veux apparaître dans le Leaderboard")
-    @app_commands.choices(visible=[Choice(name="Apparaître", value=0), Choice(name="Ne pas apparaître", value=1)])
+    @app_commands.choices(visible=[Choice(name="Apparaître", value=1), Choice(name="Ne pas apparaître", value=0)])
     async def setLeaderboardVisibility(self, ctx: Interaction, visible: int):
         await setLeaderboardVisibility.setLeaderboardVisibility(self, ctx, bool(visible))
 
