@@ -1,8 +1,7 @@
 import asyncio
 import discord
-from discord import TextChannel
-from discord import DMChannel
-
+from discord import TextChannel, DMChannel
+from discord.ui import View, Button
 from utils.leaderboard.refreshRoles import getRoleByName
 from utils.myTypes import WELCOME_MESSAGE
 
@@ -28,7 +27,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
@@ -44,7 +43,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
@@ -60,7 +59,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
@@ -76,7 +75,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
@@ -92,7 +91,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Le rôle {button.label} t'a été attribué. Tu peux toujours le changer à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
@@ -102,7 +101,7 @@ class buttonHandler(discord.ui.View):
         await interaction.response.edit_message(
             content=f"Aucun rôle ne t'a été attribué. Tu peux toujours en choisir à l'aide de la commande **/change_role**.", view=None
         )
-        await self.channel.send(WELCOME_MESSAGE)
+        await self.channel.send(WELCOME_MESSAGE, suppress_embeds=True)
         if self.channel and not isinstance(self.channel, DMChannel):
             await asyncio.sleep(10)
             await self.channel.delete()
