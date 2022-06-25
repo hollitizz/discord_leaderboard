@@ -19,6 +19,15 @@
         ],
         "users": [
             {
+                "tag": "<@543847620427251713>",
+                "name": "AChar\u00f87",
+                "tier": 7,
+                "rank": 1,
+                "lp": 121,
+                "id": "QJla6OVQQHqK6YP7FYsvbncTNWYADan986cW5ddA-MQXhuM",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@160395566147305472>",
                 "name": "Flacx",
                 "tier": 7,
@@ -262,6 +271,15 @@
                 "is_displayed": true
             },
             {
+                "tag": "<@905479749617455154>",
+                "name": "Chimique",
+                "tier": 4,
+                "rank": 1,
+                "lp": 32,
+                "id": "c7K06NuukIn9x7kCTPvcfgzA3OVQs-_rb9VnMfYP6S4xC6A",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@544180327548190731>",
                 "name": "GeNeRaLiGloO",
                 "tier": 4,
@@ -322,6 +340,15 @@
                 "rank": 3,
                 "lp": 42,
                 "id": "E-QVgK5WuHD7KGJAoSa6d9oNqPHUsoddrLrdPP7hF8nqMLo",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@419035229936812037>",
+                "name": "XxDoblyX",
+                "tier": 4,
+                "rank": 3,
+                "lp": 25,
+                "id": "uh-MOIqzLOaYOgbn-WQcsRGMTLtTmtBFvhR57e2kkJwztXY",
                 "is_displayed": true
             },
             {
@@ -514,6 +541,15 @@
                 "is_displayed": true
             },
             {
+                "tag": "<@391230418478956546>",
+                "name": "Plunkk",
+                "tier": 2,
+                "rank": 2,
+                "lp": 63,
+                "id": "IMB0pEHtV-ZDIbZd7eC2oDLRRL9eF_Xu4_Gxc8svATstTbI",
+                "is_displayed": true
+            },
+            {
                 "tag": "<@970442549804273706>",
                 "name": "Ismail747",
                 "tier": 2,
@@ -538,6 +574,15 @@
                 "rank": 3,
                 "lp": 6,
                 "id": "spTNq4Os5SLn3UBaEQmmHjdvki3Yucj8O-aqP5HpqQbziYia",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@313321854808883200>",
+                "name": "XxAFAMGxX",
+                "tier": 2,
+                "rank": 4,
+                "lp": 46,
+                "id": "_dMd6FO19SyFwdAt2PTWSyBk022TZToIEDkF2t63yYBDgt0fXGc6uu6P8g",
                 "is_displayed": true
             },
             {
@@ -595,30 +640,12 @@
                 "is_displayed": true
             },
             {
-                "tag": "<@419035229936812037>",
-                "name": "Forickias",
-                "tier": 0,
-                "rank": 1,
-                "lp": 0,
-                "id": "Yf0BeA-TsSH6U92RQsIc_GFEzyeO6yCbE8EP-KrHVkwDCSbvZ0fBr6skzA",
-                "is_displayed": true
-            },
-            {
                 "tag": "<@!457162037827600385>",
                 "name": "Miiziuky",
                 "tier": 0,
                 "rank": 1,
                 "lp": 0,
                 "id": "zjxyxuz-_v843GjCXb-M9qb-_lFn3bD3E4WtLNw7QFlrixM_",
-                "is_displayed": true
-            },
-            {
-                "tag": "<@905479749617455154>",
-                "name": "AW LIKE ME",
-                "tier": 0,
-                "rank": 1,
-                "lp": 0,
-                "id": "-X_b3E4QN2hPzPtjr4PxezBi8DXqj_hCSG2r6Q9b3xEDfIpsiHFcOdJcIQ",
                 "is_displayed": true
             }
         ],
