@@ -10,7 +10,4 @@ async def onScheduledEventCreate(self: Setup, event: ScheduledEvent):
         channel = getChannelByName(self, "coaching")
         if channel:
             await channel.send(f"Hello <@&913831403811110932> !\n Il y a un nouveau coaching de disponible n'hésitez pas a vous inscrire ! :\n{event.url}")
-    else:
-        channel = getChannelByName(self, "annonce")
-        if channel:
-            await channel.send(f"Hello @everyone !\n Un nouvel évenement est disponible n'hésitez pas a vous inscrire ! :\n{event.url}")
+

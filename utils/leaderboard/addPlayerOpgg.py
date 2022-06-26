@@ -16,5 +16,5 @@ async def addPlayerOpgg(self: Setup, message: Message):
     opgg = opgg[-1].split("=")
     user = urllib.parse.unquote(opgg[-1])
     new_user = User(tag, user, checkName(user))
-    new_user.setStats(self.riot_token)
+    await new_user.setStats(self.riot_token)
     await createPlayer(self, new_user)
