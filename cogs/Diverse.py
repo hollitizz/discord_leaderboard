@@ -1,12 +1,9 @@
 import sys
 from typing import List
 from discord.ext import commands
-from discord import Member, app_commands, Interaction, Object
+from discord import app_commands, Interaction, Object
 
-from commands.diverse import ping
-from commands.diverse import changeRole
-from commands.diverse import roll
-from commands.diverse import getOpgg
+from commands.diverse import ping, changeRole, roll, getOpgg, uwu
 from utils.myTypes import Setup
 
 
@@ -51,6 +48,11 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     async def getOpggError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
         print(f"{ctx.user} got : {error}", file=sys.stderr)
+
+    @app_commands.command(name="uwu", description="Dis UwU")
+    @app_commands.checks.has_role("bot admin")
+    async def uwu(self, ctx: Interaction, channel: str = None):
+        await uwu.uwu(self, ctx, channel)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])
