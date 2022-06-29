@@ -1,5 +1,7 @@
+from utils.getChannelByName import getChannelByName
 from utils.myTypes import Setup, userList
 from discord import Interaction
+
 
 RANK_EMOJI = [
     "<:ss:934834425705955368>",
@@ -24,7 +26,7 @@ def getRanking(i):
     return f" {i}. "
 
 async def printLeaderboard(self: Setup):
-    msg = [[]]
+    msgs = [[]]
     msg_len = 0
     msg_nbr = 0
     users: userList = self.db.leaderboard.users
@@ -42,19 +44,28 @@ async def printLeaderboard(self: Setup):
                         f'{user.lp} LP')
         msg_len += len(new_line)
         if msg_len > 1850:
-            msg.append([])
+            msgs.append([])
             msg_nbr += 1
             msg_len = 0
-        msg[msg_nbr].append(new_line)
-    channel = await self.fetch_channel(self.db.channel)
-    for chan_id in self.db.leaderboard.msgs:
-        to_edit = await channel.fetch_message(chan_id)
-        if msg:
-            await to_edit.edit(content="\n".join(msg.pop(0)))
+        msgs[msg_nbr].append(new_line)
+    channel = getChannelByName(self, "leaderboard")
+    if len(msgs) > len(self.db.leaderboard.msgs):
+        for msg_id in self.db.leaderboard.msgs:
+            msg = await channel.fetch_message(msg_id)
+            await msg.delete()
+        self.db.leaderboard.msgs.clear()
+    for msg_id in self.db.leaderboard.msgs:
+        try:
+            to_edit = await channel.fetch_message(msg_id)
+        except:
+            self.db.leaderboard.msgs.clear()
+            printLeaderboard(self)
+        if msgs:
+            await to_edit.edit(content="\n".join(msgs.pop(0)))
         else:
             await to_edit.edit(content="ㅤ")
-    while msg:
-        new_msg = await channel.send("\n".join(msg.pop(0)))
+    while msgs:
+        new_msg = await channel.send("\n".join(msgs.pop(0)))
         self.db.leaderboard.msgs.append(new_msg.id)
 
 async def sortLeaderboard(self: Setup):
@@ -74,5 +85,5 @@ async def sortLeaderboard(self: Setup):
             i = 0
         else:
             i += 1
-    self.save()
     await printLeaderboard(self)
+    self.save()

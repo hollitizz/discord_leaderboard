@@ -48,21 +48,30 @@ class Setup(commands.Bot, DbHandler):
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
                 await self.load_extension(f"cogs.{cogName}")
-            await bot.tree.sync(guild=discord.Object(id=self.guild_id))
-        self.backgroundTask.start()
+            # await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+        if self.is_test_mode:
+            print("Test mode: Background tasks disabled")
+            return
+        self.autoSaveTask.start()
+        self.autoRefreshTask.start()
+
+    @tasks.loop(hours=24)
+    async def autoSaveTask(self):
+        self.export()
 
     @tasks.loop(minutes=5)
-    async def backgroundTask(self):
-        if self.is_test_mode:
-            print("Test mode, Skipping refresh")
-            return
+    async def autoRefreshTask(self):
         try:
             await refresh.loopedRefresh(self)
         except:
             traceback.print_exc()
 
-    @backgroundTask.before_loop
-    async def waitBackgroundTask(self):
+    @autoRefreshTask.before_loop
+    async def waitAutoRefreshTask(self):
+        await self.wait_until_ready()
+
+    @autoSaveTask.before_loop
+    async def waitAutoSaveTask(self):
         await self.wait_until_ready()
 
     async def on_member_join(self, member):
@@ -82,7 +91,7 @@ class Setup(commands.Bot, DbHandler):
 
 
 try:
-    bot = Setup(is_test_mode=False)
+    bot = Setup(is_test_mode=True)
     bot.run(bot.token, reconnect=True)
 except KeyboardInterrupt:
     print("\nExiting...")
