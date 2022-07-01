@@ -19,8 +19,9 @@ async def loopedRefresh(self):
 
 async def refresh(self: Setup, ctx: Interaction):
     await ctx.response.defer(ephemeral=True)
-    await ctx.followup.send("Refreshing Stats...")
-    await refreshStats(self)
+    if not self.is_test_mode:
+        await ctx.followup.send("Refreshing Stats...")
+        await refreshStats(self)
     await ctx.edit_original_message(content="Sorting Leaderboard...")
     await sortLeaderboard(self)
     await ctx.edit_original_message(content="Refresing Roles...")

@@ -1,6 +1,6 @@
 from utils.getChannelByName import getChannelByName
 from utils.myTypes import Setup, userList
-from discord import Interaction
+from discord import Interaction, TextChannel
 
 
 RANK_EMOJI = [
@@ -24,6 +24,18 @@ def getRanking(i):
     if (i == 3):
         return ":third_place:"
     return f" {i}. "
+
+async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
+    for msg_id in self.db.leaderboard.msgs:
+        try:
+            msg = await channel.fetch_message(msg_id)
+            await msg.delete()
+        except:
+            continue
+    self.db.leaderboard.msgs.clear()
+    for i in range(newLength):
+        new_msg = await channel.send("ㅤ")
+        self.db.leaderboard.msgs.append(new_msg.id)
 
 async def printLeaderboard(self: Setup):
     msgs = [[]]
@@ -50,23 +62,16 @@ async def printLeaderboard(self: Setup):
         msgs[msg_nbr].append(new_line)
     channel = getChannelByName(self, "leaderboard")
     if len(msgs) > len(self.db.leaderboard.msgs):
-        for msg_id in self.db.leaderboard.msgs:
-            msg = await channel.fetch_message(msg_id)
-            await msg.delete()
-        self.db.leaderboard.msgs.clear()
-    for msg_id in self.db.leaderboard.msgs:
+        await resetLeaderboard(self, channel, len(msgs))
+    for msg, msg_id in zip(msgs, self.db.leaderboard.msgs):
         try:
             to_edit = await channel.fetch_message(msg_id)
         except:
-            self.db.leaderboard.msgs.clear()
-            printLeaderboard(self)
-        if msgs:
-            await to_edit.edit(content="\n".join(msgs.pop(0)))
-        else:
-            await to_edit.edit(content="ㅤ")
-    while msgs:
-        new_msg = await channel.send("\n".join(msgs.pop(0)))
-        self.db.leaderboard.msgs.append(new_msg.id)
+            await resetLeaderboard(self, channel, len(msgs))
+            await printLeaderboard(self)
+            return
+        await to_edit.edit(content="\n".join(msg))
+
 
 async def sortLeaderboard(self: Setup):
     users: userList = self.db.leaderboard.users
