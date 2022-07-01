@@ -1,6 +1,7 @@
 from discord import Interaction, Member
 from utils.leaderboard.checkIdExist import checkIdExist
 import re
+import urllib
 
 async def getOpgg(self, ctx: Interaction, req: str, sep: str):
     member_list: list[Member] = []
@@ -20,7 +21,7 @@ async def getOpgg(self, ctx: Interaction, req: str, sep: str):
             msg.append(f"{user_tag.mention} semble ne pas avoir mis son opgg !")
         else:
             msg.append(f"{user_tag.mention} : https://euw.op.gg/summoners/euw/{self.bot.db.leaderboard.users[pos].name}")
-            multi += f"{self.bot.db.leaderboard.users[pos].name},"
+            multi += f"{urllib.parse.quote(self.bot.db.leaderboard.users[pos].name)},"
     if multi != "https://euw.op.gg/multisearch/euw?summoners=":
         msg.append(f"multi opgg : {multi}")
     await ctx.response.send_message("\n".join(msg), ephemeral=True)
