@@ -60,3 +60,4 @@ async def onMemberJoin(self: Setup, member: Member):
     await channel.send("Tu peux maintenant choisir ton main rôle", view=buttonHandler(guild, channel))
     await createPlayer(self, new_user)
     await member.remove_roles(new_member_role)
+    print(f"{member} has been registred as {new_user.name}")
