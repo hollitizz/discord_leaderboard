@@ -21,7 +21,9 @@ from events.onMemberJoin import onMemberJoin
 from events.onMessage import onMessage
 from events.onReady import onReady
 
+
 import dotenv
+
 
 dotenv.load_dotenv()
 
