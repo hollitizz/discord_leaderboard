@@ -23,7 +23,7 @@
                 "name": "Only HappY",
                 "tier": 7,
                 "rank": 1,
-                "lp": 282,
+                "lp": 248,
                 "id": "9HKSH7DBpoHrtjn4BYeHa3ytwpLmHolUHF91uAF2ykq6_To",
                 "is_displayed": true
             },
@@ -68,7 +68,7 @@
                 "name": "PTDR",
                 "tier": 6,
                 "rank": 1,
-                "lp": 46,
+                "lp": 43,
                 "id": "-8OKOTsS7zIVrI1Hxnzgy5EaZaAwE2cOlamUPf-9YcRfSLM",
                 "is_displayed": true
             },
@@ -77,7 +77,7 @@
                 "name": "PGE GreenL",
                 "tier": 6,
                 "rank": 1,
-                "lp": 18,
+                "lp": 17,
                 "id": "JD1zh6jL63GwWXTNMVWYhb2KEoDvu3bp2kJOPKAjMvJR2N0",
                 "is_displayed": true
             },
@@ -397,21 +397,21 @@
                 "is_displayed": true
             },
             {
-                "tag": "<@262784138380050432>",
-                "name": "UwU Hermino",
-                "tier": 4,
-                "rank": 3,
-                "lp": 89,
-                "id": "LbYc6DA4Zw2ACl-264F0h74D_QO2PZ8NpL3FgLVnlPnyLEw",
-                "is_displayed": true
-            },
-            {
                 "tag": "<@98774113140613120>",
                 "name": "Ameyy",
                 "tier": 4,
                 "rank": 3,
                 "lp": 75,
                 "id": "jgOkeNs4WRXhyHn62X_3WYLYWzjumb3GFtX8F4yNrP86LDw",
+                "is_displayed": true
+            },
+            {
+                "tag": "<@262784138380050432>",
+                "name": "UwU Hermino",
+                "tier": 4,
+                "rank": 3,
+                "lp": 74,
+                "id": "LbYc6DA4Zw2ACl-264F0h74D_QO2PZ8NpL3FgLVnlPnyLEw",
                 "is_displayed": true
             },
             {
@@ -491,7 +491,7 @@
                 "name": "Hollitizz",
                 "tier": 4,
                 "rank": 4,
-                "lp": 30,
+                "lp": 16,
                 "id": "PijxkNq2oJs2jYGtm56us62KR7DadaLdPAUuqWynt1WFW4pG",
                 "is_displayed": true
             },
@@ -545,7 +545,7 @@
                 "name": "Triplebakas",
                 "tier": 3,
                 "rank": 1,
-                "lp": 20,
+                "lp": 8,
                 "id": "PU3SkVvUGOkl5s5vy9aetpdR_EUKoxFFogE5p0eDJhZrsi8",
                 "is_displayed": true
             },
@@ -617,7 +617,7 @@
                 "name": "Cucuro97ll",
                 "tier": 3,
                 "rank": 3,
-                "lp": 69,
+                "lp": 72,
                 "id": "1TbqSRkNRZ336jIxmPyqVTbf-D0JDDo4WSkOmXKIZeOkl5XKEl6-OzNiGw",
                 "is_displayed": true
             },
@@ -743,7 +743,7 @@
                 "name": "STRZX QLF",
                 "tier": 2,
                 "rank": 2,
-                "lp": 9,
+                "lp": 26,
                 "id": "J1ua5oZ5FlR5aiAbyYlbo2JhMhsnj92GbjXMARaYLcLOYXMDSSnO7sFVBA",
                 "is_displayed": true
             },
