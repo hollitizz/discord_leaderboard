@@ -38,7 +38,7 @@ async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
         self.db.leaderboard.msgs.append(new_msg.id)
 
 async def printLeaderboard(self: Setup):
-    msgs = [[]]
+    msgs: list[list[str]] = [[]]
     msg_len = 0
     msg_nbr = 0
     users: userList = self.db.leaderboard.users
@@ -70,7 +70,11 @@ async def printLeaderboard(self: Setup):
             await resetLeaderboard(self, channel, len(msgs))
             await printLeaderboard(self)
             return
-        await to_edit.edit(content="\n".join(msg))
+        try:
+            await to_edit.edit(content="\n".join(msg))
+        except:
+            await to_edit.edit(content="ㅤ")
+
 
 
 async def sortLeaderboard(self: Setup):
