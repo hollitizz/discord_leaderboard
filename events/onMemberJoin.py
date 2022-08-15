@@ -52,8 +52,9 @@ async def onMemberJoin(self: Setup, member: Member):
         await channel.send(first_message)
     except:
         channel = await guild.create_text_channel(f"{member.name}-DM", overwrites={
-                member: permissions.PermissionOverwrite(read_messages=True, send_messages=True, read_message_history=True)
-            }, reason="DM channel closed", default_auto_archive_duration=60
+                member: permissions.PermissionOverwrite(read_messages=True, send_messages=True, read_message_history=True),
+                guild.default_role: permissions.PermissionOverwrite(read_messages=False, send_messages=False, read_message_history=False)
+            }, reason=f"{member.mention} got closed DM channel", default_auto_archive_duration=60
         )
         await channel.send(first_message)
     new_user = await askNewMember(self, member, channel)

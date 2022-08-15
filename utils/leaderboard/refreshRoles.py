@@ -1,4 +1,4 @@
-from discord import Guild, User, Role
+from discord import Guild, Member, Role
 
 from utils.myTypes import Setup, UnknownUser
 
@@ -24,19 +24,19 @@ def getRoleByName(guild: Guild, role_name: str):
 async def getUser(guild: Guild, tag: str):
     tmp = [int(s) for s in tag if s.isdigit()]
     res = ''.join(map(str, tmp))
-    user: User = await guild.fetch_member(res)
+    user: Member = await guild.fetch_member(res)
     user_roles = user.roles
     return user, user_roles
 
-async def setRole(user: User, role: Role):
+async def setRole(user: Member, role: Role):
     await user.add_roles(role)
 
-async def unsetRole(user: User, role: Role):
+async def unsetRole(user: Member, role: Role):
     await user.remove_roles(role)
 
 async def refreshUserRole(guild: Guild, user):
     role_set = False
-    discord_user: User = None
+    discord_user: Member = None
     user_roles: list[Role] = []
     try:
         discord_user, user_roles = await getUser(guild, user.tag)
