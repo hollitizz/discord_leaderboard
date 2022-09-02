@@ -1,5 +1,4 @@
-import asyncio
-from discord import DMChannel, Member, TextChannel, permissions
+from discord import Member, TextChannel, permissions
 from utils.leaderboard.checkIdExist import checkIdExist
 from utils.leaderboard.checkName import checkName
 from utils.leaderboard.createPlayer import createPlayer

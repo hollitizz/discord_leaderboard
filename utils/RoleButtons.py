@@ -6,7 +6,6 @@ from utils.leaderboard.refreshRoles import getRoleByName
 from utils.myTypes import WELCOME_MESSAGE
 
 class buttonHandler(discord.ui.View):
-
     def __init__(self, guild: discord.Guild, channel: TextChannel):
         super().__init__()
         self.score = 0
