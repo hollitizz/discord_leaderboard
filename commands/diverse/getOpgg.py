@@ -24,6 +24,6 @@ async def getOpgg(self, ctx: Interaction, req: str, sep: str):
             msg.append(f"{user_tag.mention} : https://euw.op.gg/summoners/euw/{urllib.parse.quote(self.bot.db.leaderboard.users[pos].name)}")
             multi += f"{urllib.parse.quote(self.bot.db.leaderboard.users[pos].name)}{',' if i != len(member_list) - 1 else ''}"
             opgg_len += 1
-    if i > 1:
+    if opgg_len > 1:
         msg.append(f"multi opgg : {multi}")
     await ctx.response.send_message("\n".join(msg), ephemeral=True)
