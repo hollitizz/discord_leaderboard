@@ -23,10 +23,10 @@ from events.onReady import onReady
 
 
 import dotenv
-
+import logging
 
 dotenv.load_dotenv()
-
+discord.utils.setup_logging()
 
 class Setup(commands.Bot, DbHandler):
     def __init__(self, is_test_mode=False):
@@ -49,8 +49,10 @@ class Setup(commands.Bot, DbHandler):
         self.session = aiohttp.ClientSession
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
+                logging.info(f"Loading {cogName} commands...")
                 await self.load_extension(f"cogs.{cogName}")
-            await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+                await bot.tree.sync(guild=discord.Object(id=self.guild_id))
+                logging.info(f"{cogName} commands loaded!")
         if self.is_test_mode:
             print("Test mode: Background tasks disabled")
             return
@@ -94,6 +96,6 @@ class Setup(commands.Bot, DbHandler):
 
 try:
     bot = Setup(is_test_mode=False)
-    bot.run(bot.token, reconnect=True)
+    bot.run(bot.token, reconnect=True, log_handler=None)
 except KeyboardInterrupt:
     print("\nExiting...")
