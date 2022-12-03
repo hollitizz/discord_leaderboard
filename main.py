@@ -6,7 +6,8 @@ import discord
 from discord.ext import commands, tasks
 import os
 import inspect
-
+import asyncio
+import threading
 
 import cogs
 from commands.leaderboard import refresh
@@ -27,6 +28,15 @@ import logging
 
 dotenv.load_dotenv()
 discord.utils.setup_logging()
+
+async def createRefreshLoop(self):
+    while True:
+        try:
+            await refresh.loopedRefresh(self)
+        except:
+            traceback.print_exc()
+        await asyncio.sleep(5 * 60)
+
 
 class Setup(commands.Bot, DbHandler):
     def __init__(self, is_test_mode=False):
@@ -51,28 +61,16 @@ class Setup(commands.Bot, DbHandler):
             if inspect.isclass(_):
                 logging.info(f"Loading {cogName} commands...")
                 await self.load_extension(f"cogs.{cogName}")
-                await bot.tree.sync(guild=discord.Object(id=self.guild_id))
                 logging.info(f"{cogName} commands loaded!")
+        await bot.tree.sync(guild=discord.Object(id=self.guild_id))
         if self.is_test_mode:
             print("Test mode: Background tasks disabled")
             return
         self.autoSaveTask.start()
-        self.autoRefreshTask.start()
 
     @tasks.loop(hours=24)
     async def autoSaveTask(self):
         self.export()
-
-    @tasks.loop(minutes=5)
-    async def autoRefreshTask(self):
-        try:
-            await refresh.loopedRefresh(self)
-        except:
-            traceback.print_exc()
-
-    @autoRefreshTask.before_loop
-    async def waitAutoRefreshTask(self):
-        await self.wait_until_ready()
 
     @autoSaveTask.before_loop
     async def waitAutoSaveTask(self):
@@ -92,7 +90,11 @@ class Setup(commands.Bot, DbHandler):
 
     async def on_ready(self):
         await onReady(self)
+        loop = asyncio.get_event_loop()
+        loop.create_task(createRefreshLoop(self))
 
+    async def on_command_error(self, ctx, error):
+        print(error)
 
 try:
     bot = Setup(is_test_mode=False)
