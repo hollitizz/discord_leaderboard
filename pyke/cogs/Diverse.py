@@ -2,9 +2,12 @@ import sys
 from typing import List
 from discord.ext import commands
 from discord import app_commands, Interaction, Object
-
+import logging
 from commands.diverse import ping, changeRole, roll, getOpgg, uwu
 from utils.myTypes import Setup
+
+
+_logger = logging.getLogger(__name__)
 
 
 class Diverse(commands.Cog, description="Groupe de commande Divers"):
@@ -21,10 +24,10 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
 
     @changeRole.error
     async def changeRoleError(self, ctx: Interaction, error: Exception):
-        print(error)
+        _logger.error(error)
         await ctx.response.send_message(
             f"Une erreur est survenue, réessaie ou sinon contacte un admin", ephemeral=True)
-        print(f"{ctx.user} got : {error}", file=sys.stderr)
+        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="roll", description="Récuperer un nombre random entre deux int")
     @app_commands.describe(min="borne inférieure, 1 par defaut", max="borne supérieure, 6 par défaut")
@@ -47,7 +50,7 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     @getOpgg.error
     async def getOpggError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
-        print(f"{ctx.user} got : {error}", file=sys.stderr)
+        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="uwu", description="Dis UwU")
     @app_commands.checks.has_role("bot admin")

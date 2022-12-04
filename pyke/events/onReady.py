@@ -1,6 +1,9 @@
 import discord
-
+import logging
 from utils.myTypes import Setup
+
+
+_logger = logging.getLogger(__name__)
 
 
 async def onReady(self: Setup):
@@ -11,4 +14,4 @@ async def onReady(self: Setup):
             name="League of Legends"
         )
     )
-    print(f"{self.user} is Ready !")
+    _logger.info(f"{self.user} is Ready !")

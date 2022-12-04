@@ -1,8 +1,12 @@
-from fileinput import filename
 import json
 from types import SimpleNamespace as Namespace
 from json import JSONEncoder
 from datetime import datetime
+import logging
+
+
+_logger = logging.getLogger(__name__)
+
 
 class DbEncoder(JSONEncoder):
     def default(self, o): return o.__dict__
@@ -21,4 +25,4 @@ class DbHandler():
         file_name = f"./dbSaves/{datetime.now().date()}.json"
         with open(file_name, "w", encoding='utf-8') as db_file:
             json.dump(self.db, db_file, indent=4, cls=DbEncoder)
-        print("exported to " + file_name)
+        _logger.info("exported to " + file_name)

@@ -1,6 +1,8 @@
 from discord import Guild, Member, Role
-
+import logging
 from utils.myTypes import Setup, UnknownUser
+
+_logger = logging.getLogger(__name__)
 
 ROLE_LIST = [
     "Unranked",
@@ -62,5 +64,5 @@ async def refreshRoles(self: Setup):
             if not self.is_test_mode:
                 users.remove(user)
         except Exception as e:
-            print(e)
+            _logger.error(e)
     self.save()

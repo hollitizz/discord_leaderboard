@@ -1,4 +1,3 @@
-from time import sleep
 from discord import Interaction
 
 from utils.myTypes import User

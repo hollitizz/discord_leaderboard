@@ -3,7 +3,9 @@ from discord.ext import commands
 from discord import Member, app_commands, Interaction, Object
 from commands.coaching import createCoaching, drawCoaching
 from utils.myTypes import Setup
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class Coaching(commands.Cog, description="Groupe de commande Coaching"):
     def __init__(self, bot: Setup):
@@ -23,7 +25,7 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
     @createCoaching.error
     async def createCoachingError(self, ctx: Interaction, error: Exception):
         await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
-        print(f"{ctx.user} got : {error}", file=sys.stderr)
+        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
 
     @app_commands.command(name="draw_coaching", description="Tire au sort une personne pour le coaching")
     async def drawCoaching(self, ctx: Interaction):
@@ -32,7 +34,7 @@ class Coaching(commands.Cog, description="Groupe de commande Coaching"):
     @drawCoaching.error
     async def drawCoachingError(self, ctx: Interaction, error: Exception):
         await ctx.edit_original_message(content=error.args[0], view=None)
-        print(f"{ctx.user} got : {error}", file=sys.stderr)
+        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
 
 async def setup(bot: Setup):
     await bot.add_cog(Coaching(bot), guilds=[Object(id=bot.guild_id)])

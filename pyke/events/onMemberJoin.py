@@ -6,6 +6,10 @@ from utils.myTypes import Setup, User
 from utils.leaderboard.getPlayerStats import API_RANK
 from utils.leaderboard.refreshRoles import ROLE_LIST, getRoleByName
 from utils.RoleButtons import buttonHandler
+import logging
+
+_logger = logging.getLogger(__name__)
+
 
 def getBotRank(rank: int):
     for rank_api, rank_int in API_RANK.items():
@@ -60,4 +64,4 @@ async def onMemberJoin(self: Setup, member: Member):
     await channel.send("Tu peux maintenant choisir ton main rôle", view=buttonHandler(guild, channel))
     await createPlayer(self, new_user)
     await member.remove_roles(new_member_role)
-    print(f"{member} has been registred as {new_user.name}")
+    _logger.info(f"{member} has been registred as {new_user.name}")

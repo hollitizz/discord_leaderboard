@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import io
 from PIL import Image
-from discord import ChannelType, EntityType, Guild, Interaction, VoiceChannel
+from discord import ChannelType, EntityType, Guild, Interaction
 from dateutil import tz
 import requests
 from utils.getChannelByName import getChannelByName
