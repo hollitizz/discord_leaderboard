@@ -1,6 +1,8 @@
+import traceback
 from discord import Guild, Member, Role
 import logging
 from utils.myTypes import Setup, UnknownUser
+from utils.getRoleByName import getRoleByName
 
 
 _logger = logging.getLogger(__name__)
@@ -19,11 +21,6 @@ ROLE_LIST = [
     "Challenger"
 ]
 
-def getRoleByName(guild: Guild, role_name: str):
-    for role in guild.roles:
-        if role.name == role_name:
-            return role
-    return None
 
 async def getUser(guild: Guild, user_id: str):
     user: Member = await guild.fetch_member(user_id)
@@ -51,15 +48,17 @@ async def refreshUserRole(guild: Guild, user_id, league_tier):
 
 
 async def refreshRoles(self: Setup):
-    users_id = self.db.getUsers()
+    return
+    users_id = self.db.getUsersId()
     guild = self.get_guild(self.guild_id)
     for user_id in users_id:
         try:
             await refreshUserRole(guild, user_id, self.db.getUserMainAccountTier(user_id))
         except UnknownUser as e:
-            if not self.is_test_mode:
-                self.db.deleteUser(user_id)
-                _logger.warning(f"{e} has been deleted from the database cause he's not in the server anymore")
+            pass
+            # if not self.is_test_mode:
+            #     self.db.deleteUser(user_id)
+            #     _logger.warning(f"{e} has been deleted from the database cause he's not in the server anymore")
         except Exception as e:
+            traceback.print_exc()
             _logger.error(e)
-    self.save()

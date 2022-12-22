@@ -1,7 +1,9 @@
 from utils.getChannelByName import getChannelByName
-from utils.myTypes import Setup, userList
-from discord import Interaction, TextChannel
+from utils.myTypes import Setup
+from discord import TextChannel
+import logging
 
+_logger = logging.getLogger(__name__)
 
 RANK_EMOJI = [
     "<:ss:934834425705955368>",
@@ -26,15 +28,16 @@ def getRanking(i):
     return f" {i}. "
 
 async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
-    while channel.last_message_id is not None:
+    msgs = channel.history(limit=100)
+    async for msg in msgs:
         try:
-            msg = await channel.fetch_message(channel.last_message_id)
             await msg.delete()
         except:
             continue
     self.db.clearLeaderboardMsgs()
     for i in range(newLength):
         new_msg = await channel.send("ㅤ")
+        print(new_msg.id)
         self.db.addNewLeaderboardMsg(new_msg.id)
 
 def getSortedLeaderboard(self: Setup):
@@ -43,7 +46,7 @@ def getSortedLeaderboard(self: Setup):
     msg_len = 0
     msg_nbr = 0
 
-    for i, user_id, summoner_name, tier, rank, lp in enumerate(users):
+    for i, (user_id, summoner_name, tier, rank, lp) in enumerate(users):
         if tier == 0 or not self.db.checkuserVisibility(user_id):
             i -= 1
             continue
@@ -67,11 +70,14 @@ async def printLeaderboard(self: Setup):
     leaderboard_msgs_id = self.db.getLeaderboardMsgs()
     channel = getChannelByName(self, "leaderboard")
     if len(msgs) > len(leaderboard_msgs_id):
+        _logger.info("Leaderboard too short, resetting")
         await resetLeaderboard(self, channel, len(msgs))
+        leaderboard_msgs_id = self.db.getLeaderboardMsgs()
     for msg, msg_id in zip(msgs, leaderboard_msgs_id):
         try:
             to_edit = await channel.fetch_message(msg_id)
         except:
+            _logger.info(f"Error while fetching message {msg_id}")
             await resetLeaderboard(self, channel, len(msgs))
             await printLeaderboard(self)
             return

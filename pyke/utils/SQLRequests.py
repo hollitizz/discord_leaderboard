@@ -82,7 +82,7 @@ class SQLRequests(MySQLConnection):
         self.commit()
         return 'ok'
     
-    def getUsers(self):
+    def getUsersId(self):
         request = f"""
             SELECT user_id FROM users
         """

@@ -1,8 +1,7 @@
 import asyncio
 import discord
 from discord import TextChannel, DMChannel
-from discord.ui import View, Button
-from utils.leaderboard.refreshRoles import getRoleByName
+from utils.getRoleByName import getRoleByName
 from utils.myTypes import WELCOME_MESSAGE
 
 class buttonHandler(discord.ui.View):

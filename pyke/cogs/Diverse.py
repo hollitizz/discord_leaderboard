@@ -45,7 +45,7 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
         await roll.rollInList(self, ctx, liste, separateur)
 
     @app_commands.command(name="get_opgg", description="Recuperer le opgg d'un ou plusieurs joueurs")
-    @app_commands.describe(liste="Mention du joueur voulu/Liste de mention de joueur", séparateur="caractère séparant les mentions, par defaut un espace")
+    @app_commands.describe(liste="Mention du joueur voulu/Liste de mention de joueur", separateur="caractère séparant les mentions, par defaut un espace")
     async def getOpgg(self, ctx: Interaction, liste: str, separateur: str = " "):
         _logger.info(f"{ctx.user} used  /{ctx.command.name} with ['{liste}', '{separateur}'] as arguments")
         await getOpgg.getOpgg(self.bot, ctx, liste, separateur)
@@ -58,7 +58,7 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     @app_commands.command(name="uwu", description="Dis UwU")
     @app_commands.checks.has_role("bot admin")
     async def uwu(self, ctx: Interaction, channel: str = None):
-        _logger.info(f"{ctx.user} used  /{ctx.command.name} with {'no argument' if channel is None else f'[\'{channel}\']'} arguments")
+        _logger.info(f"""{ctx.user} used  /{ctx.command.name} with {'no argument' if channel is None else f"['{channel}']"} arguments""")
         await uwu.uwu(self, ctx, channel)
 
 async def setup(bot: Setup):

@@ -5,9 +5,6 @@ from discord.app_commands import Choice
 
 import logging
 from commands.leaderboard import register, addPlayer, setLeaderboardVisibility
-
-from utils.leaderboard import refreshRoles
-
 from utils.myTypes import Setup
 
 
@@ -33,7 +30,6 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
     @app_commands.checks.has_role("bot admin")
     async def refreshRoles(self, ctx: Interaction):
         await ctx.response.defer(thinking=True, ephemeral=True)
-        await refreshRoles.refreshRoles(self.bot)
         await ctx.edit_original_message(content="Roles rafraichis !")
 
     @refreshRoles.error
