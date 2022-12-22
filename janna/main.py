@@ -1,6 +1,3 @@
-import traceback
-
-
 import aiohttp
 import discord
 from discord.ext import commands, tasks
@@ -23,7 +20,7 @@ dotenv.load_dotenv()
 discord.utils.setup_logging()
 
 
-class Setup(commands.Bot, DbHandler):
+class Setup(commands.Bot):
     def __init__(self, is_test_mode=False):
         if is_test_mode:
             self.token: str = os.getenv("TEST_TOKEN")
