@@ -1,3 +1,4 @@
+from typing import Tuple
 import requests
 
 
@@ -43,7 +44,7 @@ def getApiRank(rank):
             return rank_int
 
 
-async def getPlayerStats(riot_token: str, league_id):
+async def getPlayerStats(riot_token: str, league_id: str) -> Tuple[int, int, int, str]:
     data = await getSummonerDatas(riot_token, league_id)
     filtered_data = None
     if (isinstance(data, list)):
