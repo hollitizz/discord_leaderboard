@@ -1,0 +1,8 @@
+aiohttp
+discord.py @ git+https://github.com/Rapptz/discord.py
+python-dotenv
+requests
+urllib3
+youtube_dl
+PyNaCl
+mysql-connector-python

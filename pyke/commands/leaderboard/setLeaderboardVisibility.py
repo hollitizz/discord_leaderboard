@@ -1,10 +1,11 @@
-from utils.leaderboard.checkIdExist import checkIdExist
+from discord import Interaction
+from utils.myTypes import Setup
 
 
-async def setLeaderboardVisibility(self, ctx, visible):
-    pos = checkIdExist(self.bot.db.leaderboard.users, ctx.user.mention)
-    if pos == -1:
-        raise Exception("Tu n'es pas enregistré sur le leaderboard !")
-    self.bot.db.leaderboard.users[pos].is_displayed = visible
-    self.bot.save()
-    await ctx.response.send_message("Ta visibilité sur le Leaderboard a été mis à jour !", ephemeral=True)
+async def setLeaderboardVisibility(self: Setup, ctx: Interaction, visible: bool):
+    self.db.setVisiblity(ctx.user.id, visible)
+    if visible:
+        await ctx.response.send_message("Ta devrais apparaître dans le leaderboard d'ici 5 minutes !", ephemeral=True)
+    else:
+        await ctx.response.send_message("Ta devrais disparaître du leaderboard d'ici 5 minutes !", ephemeral=True)
+        

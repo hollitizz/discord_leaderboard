@@ -1,6 +1,6 @@
 from discord import Interaction
 import discord
-from utils.leaderboard.refreshRoles import getRoleByName
+from utils.getRoleByName import getRoleByName
 from utils.myTypes import Setup
 
 LABELS = ["Top", "Jungle", "Mid", "ADC", "Support", "Cancel"]

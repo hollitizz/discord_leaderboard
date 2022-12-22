@@ -1,19 +1,11 @@
-import traceback
-
-
 import aiohttp
 import discord
 from discord.ext import commands, tasks
 import os
 import inspect
-import asyncio
-import threading
 
 import cogs
 from commands.leaderboard import refresh
-
-
-from utils.DbHandler import DbHandler
 
 
 from events.onReady import onReady
@@ -22,24 +14,24 @@ from events.onReady import onReady
 import dotenv
 import logging
 
+from utils.SQLRequests import SQLRequests
+
 dotenv.load_dotenv()
 discord.utils.setup_logging()
 
 
-class Setup(commands.Bot, DbHandler):
+class Setup(commands.Bot):
     def __init__(self, is_test_mode=False):
         if is_test_mode:
             self.token: str = os.getenv("TEST_TOKEN")
             self.guild_id: int = int(os.getenv("GUILD_TEST_ID"))
-            db_path: str = "../dbTest.json"
             self.bot_id: int = int(os.getenv("BOT_TEST_ID"))
         else:
             self.bot_id: int = int(os.getenv("BOT_ID"))
             self.token: str = os.getenv("TOKEN")
             self.guild_id: int = int(os.getenv("GUILD_ID"))
-            db_path: str = "../db.json"
         super().__init__("!", intents=discord.Intents.all(), application_id=self.bot_id)
-        DbHandler.__init__(self, db_path)
+        self.db = SQLRequests()
         self.is_test_mode: bool = is_test_mode
         self.riot_token: str = os.getenv("RIOT_API_KEY")
 
@@ -51,9 +43,9 @@ class Setup(commands.Bot, DbHandler):
                 await self.load_extension(f"cogs.{cogName}")
                 logging.info(f"{cogName} commands loaded!")
         await bot.tree.sync(guild=discord.Object(id=self.guild_id))
-        if self.is_test_mode:
-            logging.info("Test mode: Background tasks disabled")
-            return
+        # if self.is_test_mode:
+        #     logging.info("Test mode: Background tasks disabled")
+        #     return
         self.autoRefreshTask.start()
 
     @tasks.loop(minutes=5)
@@ -71,7 +63,7 @@ class Setup(commands.Bot, DbHandler):
         logging.error(error)
 
 try:
-    bot = Setup(is_test_mode=False)
+    bot = Setup(is_test_mode=True)
     bot.run(bot.token, reconnect=True, log_handler=None)
 except KeyboardInterrupt:
     logging.warning("\nExiting...")

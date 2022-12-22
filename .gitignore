@@ -2,3 +2,4 @@
 __pycache__
 oldmain.py
 db_saves
+convertIntoSQL.py

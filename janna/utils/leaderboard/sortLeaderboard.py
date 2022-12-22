@@ -1,7 +1,9 @@
 from utils.getChannelByName import getChannelByName
-from utils.myTypes import Setup, userList
-from discord import Interaction, TextChannel
+from utils.myTypes import Setup
+from discord import TextChannel
+import logging
 
+_logger = logging.getLogger(__name__)
 
 RANK_EMOJI = [
     "<:ss:934834425705955368>",
@@ -26,47 +28,56 @@ def getRanking(i):
     return f" {i}. "
 
 async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
-    for msg_id in self.db.leaderboard.msgs:
+    msgs = channel.history(limit=100)
+    async for msg in msgs:
         try:
-            msg = await channel.fetch_message(msg_id)
             await msg.delete()
         except:
             continue
-    self.db.leaderboard.msgs.clear()
+    self.db.clearLeaderboardMsgs()
     for i in range(newLength):
         new_msg = await channel.send("ㅤ")
-        self.db.leaderboard.msgs.append(new_msg.id)
+        print(new_msg.id)
+        self.db.addNewLeaderboardMsg(new_msg.id)
 
-async def printLeaderboard(self: Setup):
+def getSortedLeaderboard(self: Setup):
+    users = self.db.getSortedUsers()
     msgs: list[list[str]] = [[]]
     msg_len = 0
     msg_nbr = 0
-    users: userList = self.db.leaderboard.users
 
-    for i, user in enumerate(users):
-        if user.tier == 0 or not user.is_displayed:
+    for i, (user_id, summoner_name, tier, rank, lp) in enumerate(users):
+        if tier == 0 or not self.db.checkuserVisibility(user_id):
             i -= 1
             continue
         else:
             new_line =  (f'{getRanking(i + 1)} '
-                        f'{user.tag}, '
-                        f'{user.name} est '
-                        f'{RANK_EMOJI[user.tier]}'
-                        f'{(" " + str(user.rank)) if user.tier < 7 else ""}, '
-                        f'{user.lp} LP')
+                        f'<@{user_id}>, '
+                        f'{summoner_name} est '
+                        f'{RANK_EMOJI[tier]}'
+                        f'{(" " + str(rank)) if tier < 7 else ""}, '
+                        f'{lp} LP')
         msg_len += len(new_line)
         if msg_len > 1850:
             msgs.append([])
             msg_nbr += 1
             msg_len = 0
         msgs[msg_nbr].append(new_line)
+    return msgs
+
+async def printLeaderboard(self: Setup):
+    msgs = getSortedLeaderboard(self)
+    leaderboard_msgs_id = self.db.getLeaderboardMsgs()
     channel = getChannelByName(self, "leaderboard")
-    if len(msgs) > len(self.db.leaderboard.msgs):
+    if len(msgs) > len(leaderboard_msgs_id):
+        _logger.info("Leaderboard too short, resetting")
         await resetLeaderboard(self, channel, len(msgs))
-    for msg, msg_id in zip(msgs, self.db.leaderboard.msgs):
+        leaderboard_msgs_id = self.db.getLeaderboardMsgs()
+    for msg, msg_id in zip(msgs, leaderboard_msgs_id):
         try:
             to_edit = await channel.fetch_message(msg_id)
         except:
+            _logger.info(f"Error while fetching message {msg_id}")
             await resetLeaderboard(self, channel, len(msgs))
             await printLeaderboard(self)
             return
@@ -74,25 +85,3 @@ async def printLeaderboard(self: Setup):
             await to_edit.edit(content="\n".join(msg))
         except:
             await to_edit.edit(content="ㅤ")
-
-
-
-async def sortLeaderboard(self: Setup):
-    users: userList = self.db.leaderboard.users
-    i = 0
-
-    while (i < len(users) - 1):
-        if (users[i].tier < users[i + 1].tier or
-                (users[i].tier == users[i + 1].tier and
-                users[i].rank > users[i + 1].rank) or
-                    (users[i].tier == users[i + 1].tier and
-                    users[i].rank == users[i + 1].rank and
-                    users[i].lp < users[i + 1].lp)):
-            tmp = users[i]
-            users[i] = users[i + 1]
-            users[i + 1] = tmp
-            i = 0
-        else:
-            i += 1
-    await printLeaderboard(self)
-    self.save()
