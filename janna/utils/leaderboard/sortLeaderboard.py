@@ -37,7 +37,6 @@ async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
     self.db.clearLeaderboardMsgs()
     for i in range(newLength):
         new_msg = await channel.send("ㅤ")
-        print(new_msg.id)
         self.db.addNewLeaderboardMsg(new_msg.id)
 
 def getSortedLeaderboard(self: Setup):

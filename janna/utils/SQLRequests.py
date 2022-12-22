@@ -29,9 +29,9 @@ class SQLRequests(MySQLConnection):
             SELECT summoner_name FROM accounts
             WHERE user_id = "{user_id}"
             ORDER BY
-                lp DESC,
+                tier DESC,
                 `rank` ASC,
-                tier DESC
+                lp DESC
             LIMIT 1
         """
         self.__clearCache()
@@ -44,14 +44,26 @@ class SQLRequests(MySQLConnection):
             SELECT tier FROM accounts
             WHERE user_id = "{user_id}"
             ORDER BY
-                lp DESC,
+                tier DESC,
                 `rank` ASC,
-                tier DESC
+                lp DESC
             LIMIT 1
         """
         self.__clearCache()
         self.__cursor.execute(request)
         return self.__cursor.fetchone()[0]
+    
+    def getSortedUsers(self) -> 'list[tuple]':
+        request = f"""
+            SELECT user_id, summoner_name, tier, `rank`, lp FROM accounts
+            ORDER BY
+                tier DESC,
+                `rank` ASC,
+                lp DESC
+        """
+        self.__clearCache()
+        self.__cursor.execute(request)
+        return self.__cursor.fetchall()
 
     def createUser(self, user_id: int):
         request = f"""
@@ -123,18 +135,6 @@ class SQLRequests(MySQLConnection):
         self.__cursor.execute(request)
         self.commit()
         return 'ok'
-    
-    def getSortedUsers(self) -> 'list[tuple]':
-        request = f"""
-            SELECT user_id, summoner_name, tier, `rank`, lp FROM accounts
-            ORDER BY
-                lp DESC,
-                `rank` ASC,
-                tier DESC
-        """
-        self.__clearCache()
-        self.__cursor.execute(request)
-        return self.__cursor.fetchall()
 
     def getLeaderboardMsgs(self) -> 'list[int]':
         request = f"""
