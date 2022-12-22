@@ -48,7 +48,6 @@ async def refreshUserRole(guild: Guild, user_id, league_tier):
 
 
 async def refreshRoles(self: Setup):
-    return
     users_id = self.db.getUsersId()
     guild = self.get_guild(self.guild_id)
     for user_id in users_id:
@@ -56,9 +55,9 @@ async def refreshRoles(self: Setup):
             await refreshUserRole(guild, user_id, self.db.getUserMainAccountTier(user_id))
         except UnknownUser as e:
             pass
-            # if not self.is_test_mode:
-            #     self.db.deleteUser(user_id)
-            #     _logger.warning(f"{e} has been deleted from the database cause he's not in the server anymore")
+            if not self.is_test_mode:
+                self.db.deleteUser(user_id)
+                _logger.warning(f"{e} has been deleted from the database cause he's not in the server anymore")
         except Exception as e:
             traceback.print_exc()
             _logger.error(e)
