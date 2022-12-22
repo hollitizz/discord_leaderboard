@@ -4,7 +4,6 @@ from utils.myTypes import Setup
 
 
 async def refreshStats(self: Setup):
-    return
     users = self.db.getUsersId()
 
     for i, user in enumerate(users):
