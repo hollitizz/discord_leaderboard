@@ -1,5 +1,10 @@
+from asyncio import sleep
 from typing import Tuple
 import requests
+from logging import getLogger
+
+
+_logger = getLogger(__name__)
 
 
 API_TIER = {
@@ -44,16 +49,25 @@ def getApiRank(rank):
             return rank_int
 
 
-async def getPlayerStats(riot_token: str, league_id: str) -> Tuple[int, int, int, str]:
-    data = await getSummonerDatas(riot_token, league_id)
+async def getPlayerStats(riot_token: str, league_id: str, summoner_name: str) -> Tuple[int, int, int, str]:
+    if summoner_name == "KKVUhAPD":
+        return 0, 1, 0, summoner_name
+    data: list[dict] = await getSummonerDatas(riot_token, league_id)
     filtered_data = None
     if (isinstance(data, list)):
         for d in data:
             if d['queueType'] ==  "RANKED_SOLO_5x5":
                 filtered_data = d
+            if d['summonerName']:
+                summoner_name = d['summonerName']
         if not filtered_data:
-            summoner_name = filtered_data["summonerName"]
-            raise
+            return 0, 1, 0, summoner_name
+    else:
+        if data['status']['status_code'] == 429:
+            _logger.info("Rate limit exceeded, waiting 65 seconds")
+            await sleep(65)
+            return await getPlayerStats(riot_token, league_id, summoner_name)
+        raise Exception(f"Can't Parse Data {data}")
     tier = getApiTier(filtered_data["tier"])
     rank = getApiRank(filtered_data["rank"])
     lp = filtered_data["leaguePoints"]

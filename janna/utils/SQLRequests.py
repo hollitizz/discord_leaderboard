@@ -125,11 +125,20 @@ class SQLRequests(MySQLConnection):
         self.commit()
         return 'ok'
 
-    def updateUser(self, user_id: int, tier: int, rank: int, lp: int, summoner_name: str):
+    def getUserAccountsLeagueId(self, user_id: int):
+        request = f"""
+            SELECT summoner_name, league_id FROM accounts
+            WHERE user_id = "{user_id}"
+        """
+        self.__clearCache()
+        self.__cursor.execute(request)
+        return self.__cursor.fetchall()
+
+    def updateUser(self, league_id: str, tier: int, rank: int, lp: int, summoner_name: str):
         request = f"""
             UPDATE accounts
             SET tier = {tier}, `rank` = {rank}, lp = {lp}, summoner_name = "{summoner_name}"
-            WHERE user_id = "{user_id}"
+            WHERE league_id = "{league_id}"
         """
         self.__clearCache()
         self.__cursor.execute(request)
