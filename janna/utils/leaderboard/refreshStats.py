@@ -15,6 +15,7 @@ async def refreshStats(self: Setup):
             await sleep(1)
         try:
             user = await getPlayerStats(self.riot_token, user)
+            _logger.info(f"Stats for {user} refreshed")
         except Exception as e:
             _logger.error(f"Error while refreshing stats for {user}: {e}")
             continue
