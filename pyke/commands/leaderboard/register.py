@@ -15,4 +15,4 @@ async def register(self: Setup, ctx: Interaction, summoner_name: str):
         self.db.createUser(ctx.user.id)
     tier, rank, lp, summoner_name = await getPlayerStats(self.riot_token, league_id)
     self.db.addAccountToUser(ctx.user.id, summoner_name, tier, rank, lp, league_id)
-    await ctx.response.send_message("Tu es enregistré, tu devrais apparaître dans le leaderboard d'ici 5 minutes !", ephemeral=True)
+    await ctx.response.send_message("Tu es enregistré, tu devrais apparaître dans le leaderboard d'ici 10 minutes !", ephemeral=True)
