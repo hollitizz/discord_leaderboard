@@ -14,6 +14,7 @@ class SQLRequests(MySQLConnection):
         self.__cursor: CursorBase = self.cursor()
 
     def __clearCache(self):
+        self.connect()
         try:
             self.__cursor.fetchall()
         except:
