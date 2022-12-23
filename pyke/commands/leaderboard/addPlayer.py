@@ -7,7 +7,7 @@ from utils.leaderboard.checkName import checkName
 
 
 async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name: str):
-    league_id = checkName(summoner_name)
+    league_id = await checkName(summoner_name)
     if not league_id:
         await ctx.response.send_message(f"{summoner_name}, ce compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !", ephemeral=True)
         return

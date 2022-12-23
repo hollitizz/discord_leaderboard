@@ -6,7 +6,7 @@ from utils.myTypes import Setup
 
 
 async def register(self: Setup, ctx: Interaction, summoner_name: str):
-    league_id = checkName(summoner_name)
+    league_id = await checkName(summoner_name)
     if not league_id:
         await ctx.response.send_message("Ce nom n'est pas valide, ton compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !", ephemeral=True)
         return

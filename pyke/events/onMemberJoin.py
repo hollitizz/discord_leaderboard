@@ -31,7 +31,7 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
     while True:
         member_message = await self.wait_for("message", check=lambda m: m.author == member)
         summoner_name = member_message.content
-        league_id = checkName(summoner_name)
+        league_id = await checkName(summoner_name)
         if not league_id:
             await channel.send(
                 "Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW."
