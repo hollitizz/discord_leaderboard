@@ -39,7 +39,7 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
         else:
             break
     self.db.createUser(member.id)
-    tier, rank, lp, summoner_name = getPlayerStats(self.riot_token, league_id)
+    tier, rank, lp, summoner_name = getPlayerStats(self.riot_token, league_id, summoner_name)
     self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
     tier = ROLE_LIST[tier]
     rank = getBotRank(rank)
