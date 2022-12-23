@@ -50,8 +50,6 @@ def getApiRank(rank):
 
 
 async def getPlayerStats(riot_token: str, league_id: str, summoner_name: str) -> Tuple[int, int, int, str]:
-    if summoner_name == "KKVUhAPD":
-        return 0, 1, 0, summoner_name
     data: list[dict] = await getSummonerDatas(riot_token, league_id)
     filtered_data = None
     if (isinstance(data, list)):
@@ -64,8 +62,8 @@ async def getPlayerStats(riot_token: str, league_id: str, summoner_name: str) ->
             return 0, 1, 0, summoner_name
     else:
         if data['status']['status_code'] == 429:
-            _logger.info("Rate limit exceeded, waiting 65 seconds")
-            await sleep(65)
+            _logger.info("Rate limit exceeded, waiting 2 minutes")
+            await sleep(120)
             return await getPlayerStats(riot_token, league_id, summoner_name)
         raise Exception(f"Can't Parse Data {data}")
     tier = getApiTier(filtered_data["tier"])

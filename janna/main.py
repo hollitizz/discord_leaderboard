@@ -48,7 +48,7 @@ class Setup(commands.Bot):
             return
         self.autoRefreshTask.start()
 
-    @tasks.loop(minutes=5)
+    @tasks.loop(minutes=10)
     async def autoRefreshTask(self):
         await refresh.loopedRefresh(self)
 
