@@ -25,18 +25,6 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
         await ctx.response.send_message("an error occured !", ephemeral=True)
         _logger.error(f"{ctx.user} got : {error}")
 
-    @app_commands.command(name="refresh_roles", description="Rafraichis les roles")
-    @app_commands.default_permissions(manage_messages=True)
-    @app_commands.checks.has_role("bot admin")
-    async def refreshRoles(self, ctx: Interaction):
-        await ctx.response.defer(thinking=True, ephemeral=True)
-        await ctx.edit_original_message(content="Roles rafraichis !")
-
-    @refreshRoles.error
-    async def refreshRolesError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"Vous n'avez pas les permissions nécessaires pour effectuer cette action !", ephemeral=True)
-        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
-
     @app_commands.command(name="add_player", description="Ajoute un joueur au Leaderboard")
     @app_commands.default_permissions(manage_messages=True)
     @app_commands.checks.has_role("bot admin")
@@ -45,8 +33,8 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @addPlayer.error
     async def addPlayerError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
-        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
+        await ctx.response.send_message(f"an error occured", ephemeral=True)
+        _logger.error(f"{ctx.user} got : {error}")
 
     @app_commands.command(name="set_leaderboard_visibility", description="Choisis si tu veux apparaître dans le Leaderboard")
     @app_commands.choices(visible=[Choice(name="Apparaître", value=1), Choice(name="Ne pas apparaître", value=0)])
@@ -55,8 +43,8 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @setLeaderboardVisibility.error
     async def setLeaderboardVisibilityError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"{error.args[0]}", ephemeral=True)
-        _logger.error(f"{ctx.user} got : {error}", file=sys.stderr)
+        await ctx.response.send_message(f"an error occured", ephemeral=True)
+        _logger.error(f"{ctx.user} got : {error}")
 
 
 async def setup(bot: Setup):

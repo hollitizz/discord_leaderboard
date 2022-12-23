@@ -9,7 +9,8 @@ from utils.leaderboard.checkName import checkName
 async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name: str):
     league_id = checkName(summoner_name)
     if not league_id:
-        raise Exception(f"{summoner_name}, ce compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !")
+        await ctx.response.send_message(f"{summoner_name}, ce compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !", ephemeral=True)
+        return
     if not self.db.checkUserExist(member.id):
         self.db.createUser(member.id)
     tier, rank, lp, summoner_name = await getPlayerStats(self.riot_token, league_id)
