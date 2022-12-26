@@ -8,6 +8,7 @@ dotenv.load_dotenv("../pyke/.env")
 
 db = DbHandler("./olddb.json")
 
+
 class SQLRequests(connector.MySQLConnection):
     def __init__(self):
         super().__init__(
@@ -17,13 +18,13 @@ class SQLRequests(connector.MySQLConnection):
             database=os.getenv('DB_NAME')
         )
         self.__cursor: CursorBase = self.cursor()
-    
+
     def __clearCache(self):
         try:
             self.__cursor.fetchall()
         except:
             pass
-    
+
     def createUser(self, user_id: int):
         request = f"""
             INSERT INTO users (user_id)

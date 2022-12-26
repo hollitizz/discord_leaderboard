@@ -3,6 +3,10 @@ from mysql.connector.connection import CursorBase
 import os
 
 
+class AlreadyExists(Exception):
+    pass
+
+
 class SQLRequests(MySQLConnection):
     def __init__(self):
         super().__init__(
@@ -24,7 +28,7 @@ class SQLRequests(MySQLConnection):
         self.__clearCache()
         self.__cursor.execute("SHOW TABLES")
         return self.__cursor.fetchall()
-    
+
     def getLeagueMainAccountNameFromUserId(self, user_id: int) -> str:
         request = f"""
             SELECT summoner_name FROM accounts
@@ -53,7 +57,7 @@ class SQLRequests(MySQLConnection):
         self.__clearCache()
         self.__cursor.execute(request)
         return self.__cursor.fetchone()[0]
-    
+
     def getSortedUsers(self) -> 'list[tuple]':
         request = f"""
             SELECT user_id, summoner_name, tier, `rank`, lp FROM accounts
@@ -75,7 +79,7 @@ class SQLRequests(MySQLConnection):
         self.__cursor.execute(request)
         self.commit()
         return 'ok'
-        
+
 
     def checkUserExist(self, user_id: int):
         request = f"""
@@ -85,16 +89,18 @@ class SQLRequests(MySQLConnection):
         self.__clearCache()
         self.__cursor.execute(request)
         return self.__cursor.fetchone()[0] != 0
-    
+
     def addAccountToUser(self, user_id: int, summoner_name: str, tier: int, rank: int, lp: int, league_id: str):
         request = f"""
             INSERT INTO accounts (user_id, summoner_name, lp, tier, `rank`, league_id)
             VALUES ("{user_id}", "{summoner_name}", {lp}, {tier}, {rank}, "{league_id}")
-            WHERE (SELECT count(*) FROM accounts WHERE user_id = "{user_id}" AND summoner_name = "{summoner_name}") = 0
         """
         self.__clearCache()
-        self.__cursor.execute(request)
-        self.commit()
+        try:
+            self.__cursor.execute(request)
+            self.commit()
+        except:
+            raise AlreadyExists(f"Le compte {summoner_name} est déjà lié à un utilisateur !")
         return 'ok'
 
     def setVisiblity(self, user_id, is_displayed: bool):
@@ -107,7 +113,7 @@ class SQLRequests(MySQLConnection):
         self.__cursor.execute(request)
         self.commit()
         return 'ok'
-    
+
     def getUsersId(self):
         request = f"""
             SELECT user_id FROM users
@@ -173,7 +179,7 @@ class SQLRequests(MySQLConnection):
         self.__cursor.execute(request)
         self.commit()
         return 'ok'
-    
+
     def checkuserVisibility(self, user_id: int):
         request = f"""
             SELECT is_displayed FROM users

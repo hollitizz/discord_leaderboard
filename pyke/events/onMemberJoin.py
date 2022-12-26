@@ -1,4 +1,5 @@
 from discord import Member, TextChannel, permissions
+from utils.SQLRequests import AlreadyExists
 from utils.getRoleByName import getRoleByName
 from utils.leaderboard.checkName import checkName
 from utils.myTypes import Setup
@@ -40,7 +41,14 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
             break
     self.db.createUser(member.id)
     tier, rank, lp, summoner_name = await getPlayerStats(self.riot_token, league_id, summoner_name)
-    self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
+    try:
+        self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
+    except AlreadyExists as e:
+        await channel.send(e, "Merci de contacter <@222008900025581568> si il s'agit d'une erreur.")
+        await channel.send(
+            "Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW."
+        )
+        return createNewUserForNewMember(self, member, channel)
     tier = ROLE_LIST[tier]
     rank = getBotRank(rank)
     msg = f"Tu es actuellement **{tier}"
