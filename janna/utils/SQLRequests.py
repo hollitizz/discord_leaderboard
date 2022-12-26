@@ -90,6 +90,7 @@ class SQLRequests(MySQLConnection):
         request = f"""
             INSERT INTO accounts (user_id, summoner_name, lp, tier, `rank`, league_id)
             VALUES ("{user_id}", "{summoner_name}", {lp}, {tier}, {rank}, "{league_id}")
+            WHERE (SELECT count(*) FROM accounts WHERE user_id = "{user_id}" AND summoner_name = "{summoner_name}") = 0
         """
         self.__clearCache()
         self.__cursor.execute(request)
