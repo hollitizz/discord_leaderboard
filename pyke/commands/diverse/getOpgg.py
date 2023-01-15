@@ -17,7 +17,7 @@ def _getMultipleOpgg(self: Setup, ctx: Interaction, users: 'list[Member]'):
         try:
             summoner_name = self.db.getLeagueMainAccountNameFromUserId(user_tag.id)
         except Exception as e:
-            _logger.error(traceback.format_exc())
+            _logger.error(f"{user_tag} don't have a main account in the database")
         if summoner_name is None:
             msg.append(f"{user_tag.mention} semble ne pas avoir mis son opgg !")
         else:

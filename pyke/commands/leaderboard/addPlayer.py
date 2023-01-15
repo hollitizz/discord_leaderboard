@@ -20,4 +20,4 @@ async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name
     except AlreadyExists as e:
         await ctx.response.send_message(e, ephemeral=True)
         return
-    await ctx.response.send_message(f"{member} est enregistré, il devrais apparaître dans le leaderboard d'ici 10 minutes !", ephemeral=True)
+    await ctx.response.send_message(f"{member.mention} est enregistré, il devrais apparaître dans le leaderboard d'ici 10 minutes !", ephemeral=True)
