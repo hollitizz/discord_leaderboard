@@ -44,8 +44,7 @@ class Setup(commands.Bot):
                 logging.info(f"{cogName} commands loaded!")
         await bot.tree.sync(guild=discord.Object(id=self.guild_id))
         if self.is_test_mode:
-            logging.info("Test mode: Background tasks disabled")
-            return
+            logging.info("Test mode: refresh stats disabled")
         self.autoRefreshTask.start()
 
     @tasks.loop(minutes=10)
@@ -63,7 +62,7 @@ class Setup(commands.Bot):
         logging.error(error)
 
 try:
-    bot = Setup(is_test_mode=False)
+    bot = Setup(is_test_mode=True)
     bot.run(bot.token, reconnect=True, log_handler=None)
 except KeyboardInterrupt:
     logging.warning("\nExiting...")

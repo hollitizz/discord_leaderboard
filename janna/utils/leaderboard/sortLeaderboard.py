@@ -68,8 +68,8 @@ async def printLeaderboard(self: Setup):
     msgs = getSortedLeaderboard(self)
     leaderboard_msgs_id = self.db.getLeaderboardMsgs()
     channel = getChannelByName(self, "leaderboard")
-    if len(msgs) > len(leaderboard_msgs_id):
-        _logger.info("Leaderboard too short, resetting")
+    if len(msgs) > len(leaderboard_msgs_id) or len(msgs) < len(leaderboard_msgs_id):
+        _logger.info("Leaderboard not at the good size, reseting")
         await resetLeaderboard(self, channel, len(msgs))
         leaderboard_msgs_id = self.db.getLeaderboardMsgs()
     for msg, msg_id in zip(msgs, leaderboard_msgs_id):

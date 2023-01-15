@@ -1,4 +1,3 @@
-from asyncio import sleep
 import traceback
 from utils.leaderboard.getPlayerStats import getPlayerStats
 from utils.myTypes import Setup

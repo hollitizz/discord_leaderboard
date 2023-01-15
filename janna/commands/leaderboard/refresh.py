@@ -8,8 +8,9 @@ _logger = logging.getLogger(__name__)
 
 
 async def loopedRefresh(self):
-    _logger.info("Refreshing Stats...")
-    await refreshStats(self)
+    if not self.is_test_mode:
+        _logger.info("Refreshing Stats...")
+        await refreshStats(self)
     _logger.info("Refreshing Leaderboard...")
     await printLeaderboard(self)
     _logger.info("Refreshing Roles...")

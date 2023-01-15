@@ -1,3 +1,4 @@
+from collections import Counter
 from mysql.connector import MySQLConnection
 from mysql.connector.connection import CursorBase
 import os
@@ -68,7 +69,9 @@ class SQLRequests(MySQLConnection):
         """
         self.__clearCache()
         self.__cursor.execute(request)
-        return self.__cursor.fetchall()
+        result = self.__cursor.fetchall()
+        users = [x for i, x in enumerate(result) if x[0] not in {y[0] for y in result[:i]}]
+        return users
 
     def createUser(self, user_id: int):
         request = f"""
