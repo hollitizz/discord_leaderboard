@@ -33,7 +33,7 @@ def _getAllUserAccountsOpgg(self: Setup, ctx: Interaction, user: Member):
     if not accounts:
         msg = [f"{user.mention} semble ne pas avoir mis son opgg !"]
         return msg
-    msg: list[str] = [f"Voici l{'\'' if len(accounts) == 1 else 'es' } opgg de {user.mention} :"]
+    msg: list[str] = [f"""Voici l{"'" if len(accounts) == 1 else 'es' } opgg de {user.mention} :"""]
     multi = "https://euw.op.gg/multisearch/euw?summoners="
     for summoner_name, _ in accounts:
         msg.append(f"https://euw.op.gg/summoners/euw/{urllib.parse.quote(summoner_name)}")
