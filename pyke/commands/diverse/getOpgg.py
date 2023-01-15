@@ -1,3 +1,4 @@
+import traceback
 from discord import Interaction, Member
 from utils.myTypes import Setup
 import re
@@ -16,7 +17,7 @@ def _getMultipleOpgg(self: Setup, ctx: Interaction, users: 'list[Member]'):
         try:
             summoner_name = self.db.getLeagueMainAccountNameFromUserId(user_tag.id)
         except Exception as e:
-            _logger.error(e)
+            _logger.error(traceback.format_exc())
         if summoner_name is None:
             msg.append(f"{user_tag.mention} semble ne pas avoir mis son opgg !")
         else:
