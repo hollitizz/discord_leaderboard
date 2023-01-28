@@ -13,5 +13,5 @@ async def checkName(summoner_name: str):
         if res["status"]["status_code"] == 404:
             return None
         else:
-            await sleep(1)
+            await sleep(5)
             return (await checkName(summoner_name))

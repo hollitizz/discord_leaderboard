@@ -31,10 +31,13 @@ def getBotRank(rank: int):
 async def createNewUserForNewMember(self: Setup, member: Member, channel: TextChannel):
     while True:
         member_message = await self.wait_for("message", check=lambda m: m.author == member)
+        message = await channel.send(
+            "Je vérifie que ton compte existe bien sur le serveur EUW... (cela peut prendre quelques secondes)"
+        )
         summoner_name = member_message.content
         league_id = await checkName(summoner_name)
         if not league_id:
-            await channel.send(
+            await message.edit(
                 "Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW."
             )
         else:
@@ -77,7 +80,7 @@ async def onMemberJoin(self: Setup, member: Member):
         channel = await guild.create_text_channel(f"{member.name}-DM", overwrites={
                 member: permissions.PermissionOverwrite(read_messages=True, send_messages=True, read_message_history=True),
                 guild.default_role: permissions.PermissionOverwrite(read_messages=False, send_messages=False, read_message_history=False)
-            }, reason=f"{member.mention} got closed DM channel", default_auto_archive_duration=60
+            }, reason=f"{member.mention} got closed DM channel", default_auto_archive_duration=120
         )
         await channel.send(first_message)
     summoner_name = await createNewUserForNewMember(self, member, channel)
