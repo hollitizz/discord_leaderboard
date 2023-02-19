@@ -52,6 +52,7 @@ def getApiRank(rank):
 async def getPlayerStats(riot_token: str, league_id: str, summoner_name: str) -> Tuple[int, int, int, str]:
     data: list[dict] = await getSummonerDatas(riot_token, league_id)
     filtered_data = None
+    _logger.info(data)
     if (isinstance(data, list)):
         for d in data:
             if d['queueType'] ==  "RANKED_SOLO_5x5":

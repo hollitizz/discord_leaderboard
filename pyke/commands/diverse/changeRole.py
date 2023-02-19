@@ -33,6 +33,6 @@ class ChangeRoleView(discord.ui.View):
 
 async def changeRole(self: Setup, ctx: Interaction):
     await ctx.response.defer(ephemeral=True)
-    await ctx.edit_original_message(
+    await ctx.edit_original_response(
         content="Tu peux choisir ton role avec les boutons ci-dessous :",
         view=ChangeRoleView(self))
