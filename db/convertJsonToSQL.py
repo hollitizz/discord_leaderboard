@@ -4,7 +4,7 @@ import dotenv
 from DbHandler import DbHandler
 import os
 
-dotenv.load_dotenv("../pyke/.env")
+dotenv.load_dotenv("../.env")
 
 db = DbHandler("./olddb.json")
 
@@ -49,5 +49,11 @@ converter = SQLRequests()
 
 for user in db.db.users:
     user_id = user.tag.replace("<", "").replace(">", "").replace("@", "").replace("!", "")
-    converter.createUser(user_id)
-    converter.addAccountToUser(user_id, user.name, user.tier, user.rank, user.lp, user.id)
+    try:
+        converter.createUser(user_id)
+    except:
+        pass
+    try:
+        converter.addAccountToUser(user_id, user.name, user.tier, user.rank, user.lp, user.id)
+    except:
+        pass

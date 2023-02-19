@@ -1,6 +1,5 @@
 aiohttp
-discord.py @ git+https://github.com/Rapptz/discord.py
-python-dotenv
+discord.py
 requests
 urllib3
 youtube_dl

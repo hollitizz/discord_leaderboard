@@ -11,12 +11,10 @@ from commands.leaderboard import refresh
 from events.onReady import onReady
 
 
-import dotenv
 import logging
 
 from utils.SQLRequests import SQLRequests
 
-dotenv.load_dotenv()
 discord.utils.setup_logging()
 
 

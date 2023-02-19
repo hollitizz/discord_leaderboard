@@ -16,6 +16,7 @@ async def refreshStats(self: Setup):
                 tier, rank, lp, summoner_name = await getPlayerStats(self.riot_token, league_id, summoner_name)
                 self.db.updateUser(league_id, tier, rank, lp, summoner_name)
             except Exception as e:
+                
                 traceback.print_exc()
                 _logger.error(f"Error while refreshing stats of {summoner_name}: {e}")
                 continue

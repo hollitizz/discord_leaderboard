@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+    db:
+        container_name: leaderboard_db
+        image: mysql:8.0
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASS}
+        volumes:
+          - ./db/db_saves:/docker-entrypoint-initdb.d/:ro
+        ports:
+            - 3301:3306
+    
+    pyke:
+        container_name: leaderboard_pyke
+        build: ./pyke
+        restart: always
+        environment:
+            DB_HOST: leaderboard_db
+            DB_NAME: ${DB_NAME}
+            DB_USER: ${DB_USER}
+            DB_PASS: ${DB_PASS}
+            DB_ROOT_PASS: ${DB_ROOT_PASS}
+            TOKEN: ${PYKE_TOKEN}
+            TEST_TOKEN: ${PYKE_TEST_TOKEN}
+            RIOT_API_KEY: ${RIOT_API_KEY}
+            GUILD_ID: ${GUILD_ID}
+            GUILD_TEST_ID: ${GUILD_TEST_ID}
+            BOT_ID: ${PYKE_BOT_ID}
+            BOT_TEST_ID: ${PYKE_BOT_TEST_ID}
+        depends_on:
+            - db
+        volumes:
+            - ./db/db_saves:/app/pyke/db_saves
+
+    janna:
+        container_name: leaderboard_janna
+        build: ./janna
+        restart: always
+        environment:
+            DB_HOST: leaderboard_db
+            DB_NAME: ${DB_NAME}
+            DB_USER: ${DB_USER}
+            DB_PASS: ${DB_PASS}
+            TOKEN: ${JANNA_TOKEN}
+            TEST_TOKEN: ${JANNA_TEST_TOKEN}
+            RIOT_API_KEY: ${RIOT_API_KEY}
+            GUILD_ID: ${GUILD_ID}
+            GUILD_TEST_ID: ${GUILD_TEST_ID}
+            BOT_ID: ${JANNA_BOT_ID}
+            BOT_TEST_ID: ${JANNA_BOT_TEST_ID}
+        depends_on:
+            - db

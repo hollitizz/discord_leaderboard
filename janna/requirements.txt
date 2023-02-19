@@ -1,5 +1,5 @@
 aiohttp
-discord.py @ git+https://github.com/Rapptz/discord.py
+discord.py
 python-dotenv
 requests
 urllib3

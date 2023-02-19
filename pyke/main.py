@@ -2,10 +2,6 @@ import aiohttp
 import discord
 from discord.ext import commands, tasks
 import os
-import inspect
-
-import cogs
-
 
 from events.onScheduledEventCreate import onScheduledEventCreate
 from events.onMemberRemove import onMemberRemove
@@ -13,14 +9,12 @@ from events.onMemberJoin import onMemberJoin
 from events.onReady import onReady
 
 
-import dotenv
 import logging
 
 from utils.SQLRequests import SQLRequests
 from utils.exportDatabase import exportDataBase
 from utils.cleanSaveFolder import cleanSaveFolder
 
-dotenv.load_dotenv()
 discord.utils.setup_logging()
 
 
@@ -41,19 +35,19 @@ class Setup(commands.Bot):
 
     async def setup_hook(self):
         self.session = aiohttp.ClientSession
-        for cogName, _ in inspect.getmembers(cogs):
-            if inspect.isclass(_):
-                logging.info(f"Loading {cogName} commands...")
-                await self.load_extension(f"cogs.{cogName}")
-                await self.tree.sync(guild=discord.Object(id=self.guild_id))
-                logging.info(f"{cogName} commands loaded!")
+        # for cogName, _ in inspect.getmembers(cogs):
+        #     if inspect.isclass(_):
+        #         logging.info(f"Loading {cogName} commands...")
+        #         await self.load_extension(f"cogs.{cogName}")
+        #         await self.tree.sync(guild=discord.Object(id=self.guild_id))
+        #         logging.info(f"{cogName} commands loaded!")
         if self.is_test_mode:
             logging.info("Test mode: Background tasks disabled")
             return
-        if os.path.isdir(os.getenv("DB_SAVE_PATH")) and self.db is not None:
+        if os.path.isdir('./db_saves') and self.db is not None:
             self.exportDataBaseTask.start()
         else:
-            logging.warning(f"DB_SAVE_PATH is not a valid directory, auto save task is disabled")
+            logging.warning(f"./db_saves is not a valid directory, auto save task is disabled")
 
     @tasks.loop(hours=24)
     async def exportDataBaseTask(self):

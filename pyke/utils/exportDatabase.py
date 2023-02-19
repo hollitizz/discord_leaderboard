@@ -1,7 +1,9 @@
 from datetime import date
 from logging import getLogger
 import os
+import shutil
 import subprocess
+from time import sleep
 
 
 _logger = getLogger(__name__)
@@ -10,8 +12,8 @@ _logger = getLogger(__name__)
 def exportDataBase():
     today = date.today().strftime("%d-%m-%Y")
     subprocess.Popen(
-        f"mysqldump -u {os.getenv('DB_USER')} -p{os.getenv('DB_PASS')} {os.getenv('DB_NAME')} > {os.getenv('DB_SAVE_PATH')}/{today}.sql",
-        stderr=subprocess.DEVNULL,
+        f"mysqldump -p'{os.getenv('DB_ROOT_PASS')}' -h {os.getenv('DB_HOST')} {os.getenv('DB_NAME')} > ./db_saves/{today}.sql;"
+        f"rm -rf ./db_saves/init.sql; cp ./db_saves/{today}.sql ./db_saves/init.sql",
         shell=True
     )
-    _logger.info(f"save done at {os.getenv('DB_SAVE_PATH')}/{today}.sql")
+    _logger.info(f"save done at ./db_saves/{today}.sql")
