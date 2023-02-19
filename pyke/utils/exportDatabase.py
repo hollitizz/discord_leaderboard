@@ -1,9 +1,7 @@
 from datetime import date
 from logging import getLogger
 import os
-import shutil
 import subprocess
-from time import sleep
 
 
 _logger = getLogger(__name__)
