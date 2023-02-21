@@ -1,8 +1,9 @@
+import inspect
 import aiohttp
 import discord
 from discord.ext import commands, tasks
 import os
-
+import cogs
 from events.onScheduledEventCreate import onScheduledEventCreate
 from events.onMemberRemove import onMemberRemove
 from events.onMemberJoin import onMemberJoin
@@ -35,12 +36,12 @@ class Setup(commands.Bot):
 
     async def setup_hook(self):
         self.session = aiohttp.ClientSession
-        # for cogName, _ in inspect.getmembers(cogs):
-        #     if inspect.isclass(_):
-        #         logging.info(f"Loading {cogName} commands...")
-        #         await self.load_extension(f"cogs.{cogName}")
-        #         await self.tree.sync(guild=discord.Object(id=self.guild_id))
-        #         logging.info(f"{cogName} commands loaded!")
+        for cogName, _ in inspect.getmembers(cogs):
+            if inspect.isclass(_):
+                logging.info(f"Loading {cogName} commands...")
+                await self.load_extension(f"cogs.{cogName}")
+                await self.tree.sync(guild=discord.Object(id=self.guild_id))
+                logging.info(f"{cogName} commands loaded!")
         if self.is_test_mode:
             logging.info("Test mode: Background tasks disabled")
             return
