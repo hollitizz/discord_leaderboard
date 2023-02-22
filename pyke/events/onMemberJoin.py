@@ -80,7 +80,7 @@ async def onMemberJoin(self: Setup, member: Member):
         channel = await guild.create_text_channel(f"{member.name}-DM", overwrites={
                 member: permissions.PermissionOverwrite(read_messages=True, send_messages=True, read_message_history=True),
                 guild.default_role: permissions.PermissionOverwrite(read_messages=False, send_messages=False, read_message_history=False)
-            }, reason=f"{member.mention} got closed DM channel", default_auto_archive_duration=120
+            }, reason=f"{member.mention} got closed DM channel", default_auto_archive_duration=1440
         )
         await channel.send(first_message)
     summoner_name = await createNewUserForNewMember(self, member, channel)
