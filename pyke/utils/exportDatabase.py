@@ -14,4 +14,4 @@ def exportDataBase():
         f"rm -rf ./db_saves/init.sql; cp ./db_saves/{today}.sql ./db_saves/init.sql",
         shell=True
     )
-    _logger.info(f"save done at ./db_saves/{today}.sql")
+    _logger.info(f"save done at ./db/db_saves/{today}.sql")
