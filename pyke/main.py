@@ -14,7 +14,6 @@ import logging
 
 from utils.SQLRequests import SQLRequests
 from utils.exportDatabase import exportDataBase
-from utils.cleanSaveFolder import cleanSaveFolder
 
 discord.utils.setup_logging()
 
@@ -53,7 +52,6 @@ class Setup(commands.Bot):
     @tasks.loop(hours=24)
     async def exportDataBaseTask(self):
         exportDataBase()
-        cleanSaveFolder()
 
     @exportDataBaseTask.before_loop
     async def before_exportDataBaseTask(self):
