@@ -1,0 +1,23 @@
+name: Deploy the bot on the server
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+jobs:
+  deploy:
+    name: "Deploy the bot on the server"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build the docker image on the server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USER }}
+
+          script: |
+            cd ~/dev/discord_leaderboard
+            git pull
+            docker compose up -d --build pyke janna

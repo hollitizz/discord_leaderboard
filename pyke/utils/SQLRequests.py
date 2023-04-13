@@ -124,9 +124,10 @@ class SQLRequests(MySQLConnection):
 
     def deleteUser(self, user_id):
         request = f"""
-            DELETE FROM users, accounts
-            USING users INNER JOIN accounts
-            WHERE users.user_id = accounts.user_id AND users.user_id = "{user_id}"
+            DELETE FROM users
+            WHERE user_id = "{user_id}";
+            DELETE FROM accounts
+            WHERE user_id = "{user_id}";
         """
         self.__clearCache()
         self.__cursor.execute(request)
