@@ -36,12 +36,12 @@ class Setup(commands.Bot):
 
     async def setup_hook(self):
         self.session = aiohttp.ClientSession
+        logging.info(f"Loading commands...")
         for cogName, _ in inspect.getmembers(cogs):
             if inspect.isclass(_):
-                logging.info(f"Loading {cogName} commands...")
                 await self.load_extension(f"cogs.{cogName}")
-                await self.tree.sync(guild=discord.Object(id=self.guild_id))
-                logging.info(f"{cogName} commands loaded!")
+        await self.tree.sync(guild=discord.Object(id=self.guild_id))
+        logging.info(f"Commands loaded!")
         if self.is_test_mode:
             logging.info("Test mode: Background tasks disabled")
             return
