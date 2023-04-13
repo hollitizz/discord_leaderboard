@@ -38,7 +38,7 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
         league_id = await checkName(summoner_name)
         if not league_id:
             await message.edit(
-                "Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW."
+                content="Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW. Si tu pense que c'est une erreur, merci de contacter <@222008900025581568>."
             )
         else:
             break

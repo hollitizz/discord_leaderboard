@@ -53,7 +53,9 @@ async def getOpgg(self: Setup, ctx: Interaction, req: str, sep:str):
             continue
         member_list.append(fetched_member)
     if not member_list:
-        raise Exception("Aucune mention valide n'a été trouvé dans ton message")
+        await ctx.response.send_message("Erreur: Aucune mention valide n'a été trouvé dans ton message", ephemeral=True)
+        _logger.error(f"Error in getOpgg: {traceback.format_exc()}")
+        return
     if len(member_list) == 1:
         msg = _getAllUserAccountsOpgg(self, ctx, member_list[0])
     else:

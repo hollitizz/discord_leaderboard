@@ -3,7 +3,7 @@ from typing import List
 from discord.ext import commands
 from discord import app_commands, Interaction, Object
 import logging
-from commands.diverse import ping, changeRole, roll, getOpgg, uwu
+from commands.diverse import ping, changeRole, roll, getOpgg, uwu, help
 from utils.myTypes import Setup
 
 
@@ -60,6 +60,10 @@ class Diverse(commands.Cog, description="Groupe de commande Divers"):
     async def uwu(self, ctx: Interaction, channel: str = None):
         _logger.info(f"""{ctx.user} used  /{ctx.command.name} with {'no argument' if channel is None else f"['{channel}']"} arguments""")
         await uwu.uwu(self, ctx, channel)
+
+    @app_commands.command(name="help", description="Affiche les commandes disponibles")
+    async def help(self, ctx: Interaction):
+        await help.help(self.bot, ctx)
 
 async def setup(bot: Setup):
     await bot.add_cog(Diverse(bot), guilds=[Object(id=bot.guild_id)])

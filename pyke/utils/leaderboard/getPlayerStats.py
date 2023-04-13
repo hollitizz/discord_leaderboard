@@ -58,7 +58,7 @@ async def getPlayerStats(riot_token: str, league_id: str, summoner_name: str) ->
                 filtered_data = d
                 summoner_name = d['summonerName']
         if not filtered_data:
-            return 0, 1, 0, data[0]['summonerName']
+            return 0, 1, 0, data[0]['summonerName'] if len(data) > 0 else summoner_name
     else:
         if data['status']['status_code'] == 429:
             _logger.info("Rate limit exceeded, waiting 2 minutes")
