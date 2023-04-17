@@ -55,7 +55,6 @@ def getSortedLeaderboard(self: Setup):
                         f'{RANK_EMOJI[tier]}'
                         f'{(" " + str(rank)) if tier < 7 else ""}, '
                         f'{lp} LP')
-            _logger.info(f'new_line: {new_line}')
         msg_len += len(new_line)
         if msg_len > 1850:
             msgs.append([])
