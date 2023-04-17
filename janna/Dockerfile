@@ -1,9 +1,9 @@
-FROM python:alpine3.16
+FROM python:3.11
 
 WORKDIR /app/janna
 
-RUN apt update && \
-    apt install -yq tzdata && \
+RUN apt-get update && \
+    apt-get install -yq tzdata && \
     ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
