@@ -14,9 +14,9 @@ import logging
 
 from utils.SQLRequests import SQLRequests
 from utils.exportDatabase import exportDataBase
+from utils.loggingConfig import setupLogging
 
-discord.utils.setup_logging()
-
+setupLogging()
 
 class Setup(commands.Bot):
     def __init__(self, is_test_mode=False):

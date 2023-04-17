@@ -5,3 +5,4 @@ urllib3
 youtube_dl
 PyNaCl
 mysql-connector-python
+pytz

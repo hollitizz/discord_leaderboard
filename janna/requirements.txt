@@ -4,3 +4,4 @@ python-dotenv
 requests
 urllib3
 mysql-connector-python
+pytz
