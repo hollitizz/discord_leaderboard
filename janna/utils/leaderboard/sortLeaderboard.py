@@ -18,7 +18,7 @@ RANK_EMOJI = [
     "<:challengerS12:934833092114399242>"
 ]
 
-def getRanking(i):
+def getRanking(i: int):
     if (i == 1):
         return ":first_place:"
     if (i == 2):
@@ -46,7 +46,6 @@ def getSortedLeaderboard(self: Setup):
     msg_nbr = 0
 
     for i, (user_id, summoner_name, tier, rank, lp) in enumerate(users):
-        _logger.info(f'i: {i}')
         if tier == 0 or not self.db.checkuserVisibility(user_id):
             continue
         else:
@@ -56,6 +55,7 @@ def getSortedLeaderboard(self: Setup):
                         f'{RANK_EMOJI[tier]}'
                         f'{(" " + str(rank)) if tier < 7 else ""}, '
                         f'{lp} LP')
+            _logger.info(f'new_line: {new_line}')
         msg_len += len(new_line)
         if msg_len > 1850:
             msgs.append([])
