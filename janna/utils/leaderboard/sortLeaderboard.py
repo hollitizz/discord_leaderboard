@@ -25,7 +25,7 @@ def getRanking(i: int):
         return ":second_place:"
     if (i == 3):
         return ":third_place:"
-    return f" {i}. "
+    return f"a{i}. "
 
 async def resetLeaderboard(self: Setup, channel: TextChannel, newLength: int):
     msgs = channel.history(limit=100)
