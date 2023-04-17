@@ -5,6 +5,7 @@ import sys
 
 import pytz
 
+_tz = pytz.timezone('Europe/Paris')
 
 def _isDocker() -> bool:
     path = '/proc/self/cgroup'
@@ -39,11 +40,12 @@ class _ColourFormatter(logging.Formatter):
         for level, colour in LEVEL_COLOURS
     }
 
-    def formatTime(self, record, datefmt: str | None = None) -> str:
-        tz = pytz.timezone('Europe/Paris')
-        return datetime.fromtimestamp(record.created).astimezone(tz).strftime(datefmt or self.datefmt)
+    def converter(self, timestamp):
+        dt = datetime.fromtimestamp(timestamp)
+        return _tz.localize(dt).timestamp()
 
     def format(self, record):
+        record.created = self.converter(record.created)
         formatter = self.FORMATS.get(record.levelno)
         if formatter is None:
             formatter = self.FORMATS[logging.DEBUG]
