@@ -46,8 +46,8 @@ def getSortedLeaderboard(self: Setup):
     msg_nbr = 0
 
     for i, (user_id, summoner_name, tier, rank, lp) in enumerate(users):
+        _logger.info(f'i: {i}')
         if tier == 0 or not self.db.checkuserVisibility(user_id):
-            i -= 1
             continue
         else:
             new_line =  (f'{getRanking(i + 1)} '
