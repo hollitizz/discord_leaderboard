@@ -30,6 +30,8 @@ class Bot(commands.Bot):
         self.riot_token: str = os.getenv("RIOT_API_KEY")
         self.is_test_mode: bool = is_test_mode
         self.db = SQLRequests()
+        if not is_test_mode:
+            self.autoRefreshTask.start()
 
     async def setup_hook(self):
         self.session = aiohttp.ClientSession
