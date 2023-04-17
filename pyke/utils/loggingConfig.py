@@ -1,6 +1,9 @@
+from datetime import datetime
 import logging
 import os
 import sys
+
+import pytz
 
 
 def _isDocker() -> bool:
@@ -35,6 +38,10 @@ class _ColourFormatter(logging.Formatter):
         )
         for level, colour in LEVEL_COLOURS
     }
+
+    def formatTime(self, record, datefmt: str | None = None) -> str:
+        tz = pytz.timezone('Europe/Paris')
+        return datetime.fromtimestamp(record.created).astimezone(tz).strftime(datefmt or self.datefmt)
 
     def format(self, record):
         formatter = self.FORMATS.get(record.levelno)

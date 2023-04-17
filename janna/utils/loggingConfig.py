@@ -1,3 +1,4 @@
+from datetime import datetime
 import logging
 import os
 import sys
@@ -40,7 +41,7 @@ class _ColourFormatter(logging.Formatter):
 
     def formatTime(self, record, datefmt: str | None = None) -> str:
         tz = pytz.timezone('Europe/Paris')
-        return tz.localize(record.created).strftime(datefmt)
+        return datetime.fromtimestamp(record.created).astimezone(tz).strftime(datefmt or self.datefmt)
 
     def format(self, record):
         formatter = self.FORMATS.get(record.levelno)
