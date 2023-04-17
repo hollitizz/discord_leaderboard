@@ -40,12 +40,7 @@ class _ColourFormatter(logging.Formatter):
         for level, colour in LEVEL_COLOURS
     }
 
-    def converter(self, timestamp):
-        dt = datetime.fromtimestamp(timestamp)
-        return _tz.localize(dt).timestamp()
-
     def format(self, record):
-        record.created = self.converter(record.created)
         formatter = self.FORMATS.get(record.levelno)
         if formatter is None:
             formatter = self.FORMATS[logging.DEBUG]
