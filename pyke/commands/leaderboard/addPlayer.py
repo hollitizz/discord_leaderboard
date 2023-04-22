@@ -3,9 +3,12 @@ from discord import Interaction, Member
 from utils.SQLRequests import AlreadyExists
 from utils.leaderboard.getPlayerStats import getPlayerStats
 from utils.myTypes import Setup
+from utils.leaderboard.refreshRoles import refreshUserRole
 
 from utils.leaderboard.checkName import checkName
+import logging
 
+_logger = logging.getLogger(__name__)
 
 async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name: str):
     league_id = await checkName(summoner_name)
@@ -17,7 +20,10 @@ async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name
     tier, rank, lp, summoner_name = await getPlayerStats(self.riot_token, league_id, summoner_name)
     try:
         self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
+        await refreshUserRole(ctx.guild, member.id, tier)
     except AlreadyExists as e:
         await ctx.response.send_message(e, ephemeral=True)
         return
+    except Exception as e:
+        _logger.error(e)
     await ctx.response.send_message(f"{member.mention} est enregistré, il devrais apparaître dans le leaderboard d'ici 10 minutes !", ephemeral=True)

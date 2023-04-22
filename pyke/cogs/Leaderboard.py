@@ -29,14 +29,13 @@ class Leaderboard(commands.Cog, description="Groupe de commandes du Leaderboard"
 
     @app_commands.command(name="add_player", description="Ajoute un joueur au Leaderboard")
     @app_commands.default_permissions(manage_messages=True)
-    @app_commands.checks.has_role("bot admin")
     async def addPlayer(self, ctx: Interaction, membre: Member, summoner_name: str):
         _logger.info(f"{ctx.user} used  /{ctx.command.name} with ['{membre}', '{summoner_name}'] as arguments")
         await addPlayer.addPlayer(self.bot, ctx, membre, summoner_name)
 
     @addPlayer.error
     async def addPlayerError(self, ctx: Interaction, error: Exception):
-        await ctx.response.send_message(f"an error occured", ephemeral=True)
+        await ctx.response.send_message(f"Missing privileges", ephemeral=True)
         _logger.error(f"{ctx.user} got : {error}")
         traceback.print_exc()
 

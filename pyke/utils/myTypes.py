@@ -24,6 +24,8 @@ WELCOME_MESSAGE ="""
 https://discord.gg/t4RbZfM7aY
 """
 
+class UnknownUser(Exception):
+    pass
 
 class Setup(commands.Bot):
     def __init__(self, is_test_mode=False):

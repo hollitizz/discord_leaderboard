@@ -31,6 +31,7 @@ services:
             GUILD_TEST_ID: ${GUILD_TEST_ID}
             BOT_ID: ${PYKE_BOT_ID}
             BOT_TEST_ID: ${PYKE_BOT_TEST_ID}
+            DEBUG: ${DEBUG}
         depends_on:
             - db
         volumes:
@@ -52,5 +53,6 @@ services:
             GUILD_TEST_ID: ${GUILD_TEST_ID}
             BOT_ID: ${JANNA_BOT_ID}
             BOT_TEST_ID: ${JANNA_BOT_TEST_ID}
+            DEBUG: ${DEBUG}
         depends_on:
             - db

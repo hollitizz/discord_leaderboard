@@ -73,7 +73,7 @@ class Setup(commands.Bot):
         logging.error(error)
 
 try:
-    bot = Setup(is_test_mode=False)
+    bot = Setup(is_test_mode=os.getenv("DEBUG") == "True")
     bot.run(bot.token, reconnect=True, log_handler=None)
 except KeyboardInterrupt:
     logging.warning("\nExiting...")
