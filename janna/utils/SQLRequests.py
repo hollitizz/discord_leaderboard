@@ -132,7 +132,7 @@ class SQLRequests(MySQLConnection):
             WHERE users.user_id = accounts.user_id AND users.user_id = "{user_id}"
         """
         self.__clearCache()
-        self.__cursor.execute(request)
+        self.__cursor.execute(request, multi=True)
         self.commit()
         return 'ok'
 

@@ -130,7 +130,7 @@ class SQLRequests(MySQLConnection):
             WHERE user_id = "{user_id}";
         """
         self.__clearCache()
-        self.__cursor.execute(request)
+        self.__cursor.execute(request, multi=True)
         self.commit()
         return 'ok'
 
