@@ -128,12 +128,10 @@ class SQLRequests(MySQLConnection):
     def deleteUser(self, user_id):
         request = f"""
             DELETE FROM users
-            WHERE user_id = "{user_id}";
-            DELETE FROM accounts
-            WHERE user_id = "{user_id}";
+            WHERE user_id = "{user_id}"
         """
         self.__clearCache()
-        self.__cursor.execute(request, multi=True)
+        self.__cursor.execute(request)
         self.commit()
         return 'ok'
 

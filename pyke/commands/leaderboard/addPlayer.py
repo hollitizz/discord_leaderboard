@@ -11,9 +11,10 @@ import logging
 _logger = logging.getLogger(__name__)
 
 async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name: str):
+    await ctx.response.defer(ephemeral=True, thinking=True)
     league_id = await checkName(summoner_name)
     if not league_id:
-        await ctx.response.send_message(f"{summoner_name}, ce compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !", ephemeral=True)
+        await ctx.response.edit_message(content=f"{summoner_name}, ce compte doit être enregistré sur le serveur EUW .\n Vérifie l'orthographe et réessaye !")
         return
     if not self.db.checkUserExist(member.id):
         self.db.createUser(member.id)
@@ -22,8 +23,8 @@ async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name
         self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
         await refreshUserRole(ctx.guild, member.id, tier)
     except AlreadyExists as e:
-        await ctx.response.send_message(e, ephemeral=True)
+        await ctx.response.edit_message(e)
         return
     except Exception as e:
         _logger.error(e)
-    await ctx.response.send_message(f"{member.mention} est enregistré, il devrais apparaître dans le leaderboard d'ici 10 minutes !", ephemeral=True)
+    await ctx.response.edit_message(content=f"{member.mention} est enregistré, il devrais apparaître dans le leaderboard d'ici 10 minutes !")

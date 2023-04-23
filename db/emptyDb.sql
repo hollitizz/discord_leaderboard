@@ -17,5 +17,6 @@ CREATE TABLE `accounts` (
 	`tier` INT DEFAULT 0,
 	`rank` INT DEFAULT 0,
 	`lp` INT DEFAULT 0,
-	`league_id` TEXT NOT NULL
+	`league_id` TEXT NOT NULL,
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
 );

@@ -53,20 +53,23 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
             "Je n'ai pas pu trouver ton nom d'invocateur, merci de le ressaisir et de vérifier que ton compte est bien sur le serveur EUW."
         )
         return createNewUserForNewMember(self, member, channel)
-    tier = ROLE_LIST[tier]
+    role_tier = ROLE_LIST[tier]
     rank = getBotRank(rank)
-    msg = f"Tu es actuellement **{tier}"
-    if tier != "Unranked":
+    msg = f"Tu es actuellement **{role_tier}"
+    if role_tier != "Unranked":
         msg += f" {rank} {lp}lp"
     msg += "**,\n"
     sended_msg = await channel.send(msg)
     await sended_msg.edit(content=f"{msg}Si ce n'est pas le cas, tu peux contacter <@222008900025581568> pour obtenir de l'aide.")
-    await refreshUserRole(await self.fetch_guild(self.guild_id), member, tier)
+    await refreshUserRole(await self.fetch_guild(self.guild_id), member.id, tier)
     return summoner_name
 
 async def onMemberJoin(self: Setup, member: Member):
-    tag = member.mention
+    _logger.info(f"{member} joined the server")
     new_member_role = getRoleByName(member.guild, "Nouveau")
+    if not new_member_role:
+        _logger.error("Role 'Nouveau' not found")
+        return
     await member.add_roles(new_member_role)
     if self.db.checkUserExist(member.id) and not self.is_test_mode:
         await member.remove_roles(new_member_role)
