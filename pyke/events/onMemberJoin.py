@@ -61,7 +61,7 @@ async def createNewUserForNewMember(self: Setup, member: Member, channel: TextCh
     msg += "**,\n"
     sended_msg = await channel.send(msg)
     await sended_msg.edit(content=f"{msg}Si ce n'est pas le cas, tu peux contacter <@222008900025581568> pour obtenir de l'aide.")
-    await refreshUserRole(self, member, tier)
+    await refreshUserRole(await self.fetch_guild(self.guild_id), member, tier)
     return summoner_name
 
 async def onMemberJoin(self: Setup, member: Member):
