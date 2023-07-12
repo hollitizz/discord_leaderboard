@@ -23,7 +23,7 @@ async def addPlayer(self: Setup, ctx: Interaction, member: Member, summoner_name
         self.db.addAccountToUser(member.id, summoner_name, tier, rank, lp, league_id)
         await refreshUserRole(ctx.guild, member.id, tier)
     except AlreadyExists as e:
-        await ctx.response.edit_message(e)
+        await ctx.response.edit_message(content=e)
         return
     except Exception as e:
         _logger.error(e)
