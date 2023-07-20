@@ -15,6 +15,7 @@ ROLE_LIST = [
     "Silver",
     "Gold",
     "Platine",
+    "Émeraude",
     "Diamant",
     "Master",
     "Grandmaster",
